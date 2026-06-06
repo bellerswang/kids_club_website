@@ -130,6 +130,87 @@
   gap: 16px;
 }
 
+/* Centered Minimalist Hero (Option B) */
+.hero-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+  width: 100%;
+}
+
+.hero-centered .hero-logo-large {
+  width: 200px;
+  height: auto;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 4px 15px rgba(242, 100, 25, 0.15));
+  transition: var(--transition-smooth);
+}
+
+.hero-centered .hero-logo-large:hover {
+  transform: scale(1.04);
+}
+
+.hero-centered .hero-title {
+  font-size: 3.4rem;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.hero-centered .hero-title span {
+  background: linear-gradient(135deg, var(--color-badminton) 0%, var(--color-tech) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-centered .hero-divider {
+  width: 160px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-badminton), transparent);
+  margin: 20px auto;
+}
+
+.hero-centered .hero-desc {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 760px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.hero-centered .hero-actions {
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-centered .hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-tech);
+  margin-bottom: 24px;
+}
+
+.hero-centered .hero-tag-bullet {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-tech);
+  border-radius: var(--radius-round);
+  box-shadow: 0 0 10px var(--color-tech);
+}
+
 /* Hero Interactive Mockup on Right Side */
 .hero-visual {
   position: relative;

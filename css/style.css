@@ -129,15 +129,15 @@ button {
   transform: scale(1.04);
 }
 
-.brand-logo .dark-logo {
+.dark-logo {
   display: none !important;
 }
 
-[data-theme="dark"] .brand-logo .light-logo {
+[data-theme="dark"] .light-logo {
   display: none !important;
 }
 
-[data-theme="dark"] .brand-logo .dark-logo {
+[data-theme="dark"] .dark-logo {
   display: block !important;
 }
 

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="飞跃未来少儿AI与编程基地 - 精品Scratch图形化编程、Python趣味代码课与AI人机交互课程。培养孩子在人工智能时代的逻辑思维与工程造诣。">
+  <title>AI与少儿编程启蒙基地 - 飞跃未来少儿学院</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- Top Notification Bar -->
+  <div style="background: linear-gradient(90deg, var(--color-badminton), var(--color-tech)); color: #fff; text-align: center; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; z-index: 1001; position: relative;">
+    🤖 科技周特惠：本月内报名AI编程课程，即赠送开源智能避障机器人小车套件一套！
+  </div>
+
+  <!-- Header Section -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="header-logo">
+        <div class="logo-icon">F</div>
+        <div class="logo-text">飞跃未来<span>少儿学院</span></div>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
+          <li class="nav-item nav-item-has-dropdown active">
+            <a href="#" class="nav-link">特色课程 ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="badminton.html" class="dropdown-link">🏸 少儿羽毛球</a></li>
+              <li><a href="academics.html" class="dropdown-link">📚 学科同步学习</a></li>
+              <li><a href="programming.html" class="dropdown-link">🤖 AI 与 编程</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="about.html" class="nav-link">关于我们</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">联系与校区</a></li>
+        </ul>
+        <a href="index.html#booking" class="btn btn-primary btn-pulse" style="padding: 10px 22px; font-size: 0.9rem; margin-left: 20px;">预约免费试听</a>
+      </nav>
+
+      <!-- Mobile Menu Toggle Button -->
+      <div class="mobile-toggle" id="mobile-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu Overlay -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <ul class="mobile-menu">
+      <li><a href="index.html" class="mobile-link">首页</a></li>
+      <li>
+        <span class="mobile-link" style="color: var(--text-muted);">特色课程</span>
+        <ul class="mobile-sub-menu">
+          <li><a href="badminton.html" class="mobile-sub-link">🏸 少儿羽毛球</a></li>
+          <li><a href="academics.html" class="mobile-sub-link">📚 学科同步学习</a></li>
+          <li><a href="programming.html" class="mobile-sub-link active">🤖 AI 与 编程</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html" class="mobile-link">关于我们</a></li>
+      <li><a href="contact.html" class="mobile-link">联系与校区</a></li>
+    </ul>
+    <a href="index.html#booking" class="btn btn-primary btn-pulse" style="width: 100%; text-align: center; margin-top: 30px;">立即预约试听</a>
+  </nav>
+
+  <main>
+    <!-- Background Glow Blobs -->
+    <div class="glow-blob blob-3"></div>
+
+    <!-- Program Hero -->
+    <section class="program-hero">
+      <div class="container program-hero-grid">
+        <div class="program-hero-content">
+          <div class="program-highlight-tag highlight-tech">🤖 人工智能时代素养</div>
+          <h1>AI 与 编程启蒙基地</h1>
+          <p>
+            未来的文盲将不是不识字的人，而是不会与AI和编程语言对话的人。我们通过 Scratch 图形化设计、Python 软硬件机器人开发，以及系统的 AI Prompt (提示词) 课，让孩子从科技的“消费者”转变为科技的“创造者”。
+          </p>
+          <a href="#playground" class="btn btn-tech">体验少儿编程编辑器</a>
+        </div>
+        <div>
+          <img src="images/programming.png" alt="少儿编程AI机器人" style="border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: var(--glass-shadow);">
+        </div>
+      </div>
+    </section>
+
+    <!-- Program Levels Section -->
+    <section class="section" id="levels">
+      <div class="container">
+        <div class="section-title-wrapper">
+          <span class="section-tag">少儿科创路线</span>
+          <h2 class="section-title">分阶段课程设计</h2>
+          <p class="section-desc">从直观图形块，到扎实代码逻辑，再到前沿AI大语言工具应用，一步一个台阶。</p>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Level 1 -->
+          <div class="glass-card card-tech reveal">
+            <span class="age-range" style="background-color: rgba(0, 180, 216, 0.15); color: var(--color-tech); margin-bottom: 16px; display: inline-block;">L1 • 创意积木编程</span>
+            <h3 style="margin-bottom: 12px;">适合年龄: 6-9 岁</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+              基于 Scratch 图形化积木拼搭。不学枯燥语法，而是通过拖拽拼装，设计“疯狂羽毛球”、“超级玛丽”等经典游戏和创意动画，掌握变量、条件判断和循环结构。
+            </p>
+            <ul class="pillar-features-list" style="margin-bottom: 0;">
+              <li>核心技术：Scratch 3.0 图形积木、小猫动画</li>
+              <li>教学重点：逻辑链拆解、空间几何思维</li>
+              <li>获得证书：少儿编程等级考试 1-2 级水平</li>
+            </ul>
+          </div>
+
+          <!-- Level 2 -->
+          <div class="glass-card card-tech reveal" style="animation-delay: 0.1s;">
+            <span class="age-range" style="background-color: rgba(0, 180, 216, 0.15); color: var(--color-tech); margin-bottom: 16px; display: inline-block;">L2 • Python与硬件交互</span>
+            <h3 style="margin-bottom: 12px;">适合年龄: 10-12 岁</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+              完成图形到文本代码的飞跃。学习 Python 核心语法、算法设计，并操作 Micro:bit、树莓派等硬件，亲手编写代码操纵“自动网球投掷机”和“避障巡线小车”。
+            </p>
+            <ul class="pillar-features-list" style="margin-bottom: 0;">
+              <li>核心技术：Python 基础、传感器模块控制</li>
+              <li>教学重点：面向对象思维、物理软硬结合</li>
+              <li>获得证书：Python 蓝桥杯省赛水平、等考3级</li>
+            </ul>
+          </div>
+
+          <!-- Level 3 -->
+          <div class="glass-card card-tech reveal" style="animation-delay: 0.2s;">
+            <span class="age-range" style="background-color: rgba(0, 180, 216, 0.15); color: var(--color-tech); margin-bottom: 16px; display: inline-block;">L3 • AI应用与高级算法</span>
+            <h3 style="margin-bottom: 12px;">适合年龄: 13-16 岁</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+              与AI时代同行。教授大数据分析、网络爬虫、AI 提示词工程。学生将学习如何使用 AI 工具辅助编程，设计属于自己的 AI Chatbot（聊天机器人）及智能应用。
+            </p>
+            <ul class="pillar-features-list" style="margin-bottom: 0;">
+              <li>核心技术：大语言模型API调用、Prompt工程</li>
+              <li>教学重点：人机协同、高级算法框架</li>
+              <li>获得证书：青少年AI工程师考级证书、全国科创赛</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Code Playground Section (WOW Feature) -->
+    <section class="section" id="playground" style="background-color: rgba(255, 255, 255, 0.01); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container" style="max-width: var(--max-width-narrow);">
+        <div class="section-title-wrapper" style="margin-bottom: 40px;">
+          <span class="section-tag" style="color: var(--color-tech);">极客互动区</span>
+          <h2 class="section-title">动手试试：用代码控制羽毛球AI机器人</h2>
+          <p class="section-desc">在下方黑框编辑器内点击“运行代码”，看我们如何通过简单的 Python 指令控制机器人击球得分！</p>
+        </div>
+
+        <div class="code-playground-container reveal">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="code-dot code-dot-red"></span>
+              <span class="code-dot code-dot-yellow"></span>
+              <span class="code-dot code-dot-green"></span>
+            </div>
+            <div class="code-tab">badminton_robot.py</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Python 3.10</div>
+          </div>
+          
+          <div class="code-editor-body">
+            <!-- Left Code Inputs -->
+            <textarea id="code-input" class="code-input-area" spellcheck="false" rows="10"># 帮助羽毛球AI机器人跨越网兜并完成扣杀！
+robot.moveRight();
+robot.jump();
+robot.smash();</textarea>
+
+            <!-- Right Terminal Outputs -->
+            <div class="code-output-area">
+              <pre id="output-screen" class="code-output-screen">// 点击下方“运行代码”按钮查看AI执行结果...</pre>
+              <div class="code-actions">
+                <button id="run-code-btn" class="btn btn-tech" style="padding: 8px 20px; font-size: 0.85rem; border-radius: var(--radius-sm);">▶ 运行代码</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faculty/Teachers Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrapper">
+          <span class="section-tag">技术导师</span>
+          <h2 class="section-title">科技导师天团</h2>
+          <p class="section-desc">由名校计算机背景的行业专家和带队竞赛的科创名师领衔，拒绝照本宣科。</p>
+        </div>
+
+        <div class="team-grid reveal">
+          <!-- Coach 1 -->
+          <div class="glass-card team-card">
+            <div class="team-avatar-wrapper" style="border-color: var(--color-tech);">
+              <div style="background: var(--color-tech-glow); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:3rem;">🦅</div>
+            </div>
+            <h3>陈曦 <span>编程教学总监</span></h3>
+            <p class="team-role" style="color: var(--color-tech);">清华大学软件工程学士 • 原大厂架构师</p>
+            <p class="team-bio">
+              拥有10年软件开发与团队管理经验，2020年起投身少儿编程。擅长用生活实例讲解复杂的算法。累计辅导数十名学员在全国蓝桥杯、青少年等考中获得一等奖。
+            </p>
+          </div>
+
+          <!-- Coach 2 -->
+          <div class="glass-card team-card">
+            <div class="team-avatar-wrapper" style="border-color: var(--color-tech);">
+              <div style="background: var(--color-tech-glow); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:3rem;">🐺</div>
+            </div>
+            <h3>Alex <span>AI科学课特邀专家</span></h3>
+            <p class="team-role" style="color: var(--color-tech);">卡内基梅隆大学人工智能硕士</p>
+            <p class="team-bio">
+              主要研究人机自然语言交互，设计了飞跃未来独创的“少儿大模型提问与Agent交互”课程。致力于帮助孩子提早培养人机协同工作习惯，掌握未来核心竞争力。
+            </p>
+          </div>
+
+          <!-- Coach 3 -->
+          <div class="glass-card team-card">
+            <div class="team-avatar-wrapper" style="border-color: var(--color-tech);">
+              <div style="background: var(--color-tech-glow); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:3rem;">🐯</div>
+            </div>
+            <h3>李静 <span>金牌创客教练</span></h3>
+            <p class="team-role" style="color: var(--color-tech);">北京邮电大学智能机器人实验室骨干</p>
+            <p class="team-bio">
+              主攻智能传感器开发和少儿创客开源硬件。多次带队参加“全国青少年机器人大赛”斩获奖项。擅长手把手教孩子搭建智能物联网项目，让代码在现实中动起来。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page CTA Section -->
+    <section class="section" style="background-color: var(--color-tech); color: #fff; text-align: center;">
+      <div class="container reveal">
+        <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; color:#fff;">点亮孩子的科技天赋</h2>
+        <p style="font-size: 1.15rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9;">
+          预约一节“60分钟AI编程与机器人体验课”。获得由名校导师面对面提供的孩子“数理逻辑与编程天赋测评报告”！
+        </p>
+        <a href="index.html#booking" class="btn btn-outline" style="border-color:#fff; color:#fff; font-size:1.1rem; padding: 16px 36px; background-color: rgba(255,255,255,0.15)">立即免费报名体验</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-logo-desc">
+        <a href="index.html" class="brand-logo" style="color: #fff;">
+          <div class="logo-icon">F</div>
+          <div class="logo-text">飞跃未来<span>少儿学院</span></div>
+        </a>
+        <p>
+          我们致力于通过卓越的运动训练、系统的文化辅导和前沿的AI科技启蒙，让孩子强健身心、拓宽视野，拥抱无限可能的明天。
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-icon" title="官方微信">💬</a>
+          <a href="#" class="social-icon" title="小红书官方号">📕</a>
+          <a href="#" class="social-icon" title="官方微博">🐦</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">快速链接</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">学院首页</a></li>
+          <li><a href="about.html" class="footer-link">关于我们</a></li>
+          <li><a href="contact.html" class="footer-link">校区分布</a></li>
+          <li><a href="index.html#booking" class="footer-link">免费预约</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">特色课程</h4>
+        <ul class="footer-links">
+          <li><a href="badminton.html" class="footer-link">🏸 少儿羽毛球</a></li>
+          <li><a href="academics.html" class="footer-link">📚 学科学习中心</a></li>
+          <li><a href="programming.html" class="footer-link">🤖 AI与编程基地</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">联系我们</h4>
+        <ul class="footer-contact-info">
+          <li>
+            <span class="footer-contact-icon">📍</span>
+            <span>北京市海淀区中关村科技园文体中心 3层</span>
+          </li>
+          <li>
+            <span class="footer-contact-icon">📞</span>
+            <span>400-888-9999 (服务时间: 9:00 - 21:00)</span>
+          </li>
+          <li>
+            <span class="footer-contact-icon">✉️</span>
+            <span>support@feiyueweilai.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 飞跃未来少儿学院. 保留所有权利。</p>
+      <ul class="footer-bottom-links">
+        <li><a href="#" class="footer-bottom-link">使用条款</a></li>
+        <li><a href="#" class="footer-bottom-link">隐私政策</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>

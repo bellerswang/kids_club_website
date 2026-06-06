@@ -169,6 +169,33 @@
   .grid-3, .grid-2 {
     grid-template-columns: 1fr;
   }
+
+  /* Horizontal swipe card carousel layout on mobile (App-like UX) */
+  .swipe-on-mobile {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px !important;
+    padding-bottom: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-left: -24px;
+    margin-right: -24px;
+    scrollbar-width: none;
+  }
+
+  .swipe-on-mobile::-webkit-scrollbar {
+    display: none;
+  }
+
+  .swipe-on-mobile > * {
+    flex-shrink: 0 !important;
+    width: 82vw !important; /* Show a hint of the next card */
+    max-width: 330px !important;
+    scroll-snap-align: center;
+  }
 }
 
 /* Form Styles */

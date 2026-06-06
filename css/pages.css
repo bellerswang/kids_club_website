@@ -697,6 +697,25 @@
   }
 }
 
+@media (max-width: 768px) {
+  .glow-blob {
+    width: 250px;
+    height: 250px;
+    filter: blur(35px);
+  }
+  .timeline::before {
+    left: 20px;
+  }
+  .timeline-number {
+    width: 44px;
+    height: 44px;
+    font-size: 1.05rem;
+  }
+  .timeline-item {
+    padding-left: 60px;
+  }
+}
+
 @media (max-width: 576px) {
   .hero-title {
     font-size: 2.1rem;
@@ -717,3 +736,4 @@
     width: 100%;
   }
 }
+

@@ -1,0 +1,7 @@
+interface:
+  display_name: "项目架构与 TODO 管家"
+  short_description: "持续同步项目架构、技术决策、改动记录以及后续重构任务清单"
+  default_prompt: "Use $project-architecture-keeper to implement this project change and keep ARCHITECTURE.md and TODO.md synchronized."
+
+policy:
+  allow_implicit_invocation: true

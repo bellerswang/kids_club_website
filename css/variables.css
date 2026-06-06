@@ -7,22 +7,22 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Color Palette - Core Accents */
-  --color-badminton: #00a355;        /* Vibrant Energetic Green (Zidannes-inspired) */
-  --color-badminton-glow: rgba(0, 163, 85, 0.25);
-  --color-badminton-hover: #008746;
+  --color-badminton: #f26419;        /* Warm Brand Orange (from Sunbridge Logo) */
+  --color-badminton-glow: rgba(242, 100, 25, 0.25);
+  --color-badminton-hover: #e65c00;
   
-  --color-academic: #0052cc;         /* Trustworthy Blue */
-  --color-academic-glow: rgba(0, 82, 204, 0.25);
-  --color-academic-hover: #0041a3;
+  --color-academic: #d95d14;         /* Deep Amber Orange */
+  --color-academic-glow: rgba(217, 93, 20, 0.25);
+  --color-academic-hover: #b84e0e;
   
-  --color-tech: #00b4d8;             /* Futuristic Cyber Cyan */
-  --color-tech-glow: rgba(0, 180, 216, 0.25);
-  --color-tech-hover: #0096b4;
+  --color-tech: #e76f51;             /* Warm Coral Orange */
+  --color-tech-glow: rgba(231, 111, 81, 0.25);
+  --color-tech-hover: #d65d3f;
 
-  --color-accent: #ff6b35;           /* Energetic Orange Highlight */
-  --color-accent-glow: rgba(255, 107, 53, 0.25);
+  --color-accent: #f26419;           /* Energetic Orange Highlight */
+  --color-accent-glow: rgba(242, 100, 25, 0.25);
 
-  /* Neutrals - Dark Mode (Default Premium Aesthetics) */
+  /* Neutrals - Dark Mode */
   --bg-dark: #0a0e17;
   --bg-dark-rgb: 10, 14, 23;
   --bg-dark-card: rgba(20, 28, 45, 0.7);
@@ -31,26 +31,26 @@
   --text-dark-muted: #94a3b8;
   --border-dark: rgba(255, 255, 255, 0.08);
 
-  /* Neutrals - Light Mode */
-  --bg-light: #f8fafc;
-  --bg-light-rgb: 248, 250, 252;
-  --bg-light-card: rgba(255, 255, 255, 0.8);
+  /* Neutrals - Light Mode (Default Premium Aesthetics) */
+  --bg-light: #fcfbfa;               /* Off-white background from flyers */
+  --bg-light-rgb: 252, 251, 250;
+  --bg-light-card: rgba(255, 255, 255, 0.85);
   --bg-light-card-rgb: 255, 255, 255;
-  --text-light-main: #0f172a;
-  --text-light-muted: #64748b;
-  --border-light: rgba(15, 23, 42, 0.08);
+  --text-light-main: #2b2b2b;        /* Soft Dark Charcoal from flyers */
+  --text-light-muted: #666666;       /* Softer body gray */
+  --border-light: rgba(43, 43, 43, 0.08);
 
-  /* Active Theme Mapping (Starts in Dark/Deep Tech-Sport mode for WOW effect) */
-  --bg-page: var(--bg-dark);
-  --bg-page-rgb: var(--bg-dark-rgb);
-  --bg-card: var(--bg-dark-card);
-  --bg-card-rgb: var(--bg-dark-card-rgb);
-  --text-main: var(--text-dark-main);
-  --text-muted: var(--text-dark-muted);
-  --border-color: var(--border-dark);
+  /* Active Theme Mapping (Defaults to Light Mode) */
+  --bg-page: var(--bg-light);
+  --bg-page-rgb: var(--bg-light-rgb);
+  --bg-card: var(--bg-light-card);
+  --bg-card-rgb: var(--bg-light-card-rgb);
+  --text-main: var(--text-light-main);
+  --text-muted: var(--text-light-muted);
+  --border-color: var(--border-light);
+  --glass-shadow: var(--glass-shadow-light);
   
   /* Shadow & Glass Effects */
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   --glass-shadow-light: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
   --glass-blur: 12px;
   --box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -75,23 +75,23 @@
   --height-header-shrink: 70px;
 }
 
-/* Light Theme Override Class (for custom switching if needed) */
-[data-theme="light"] {
-  --bg-page: var(--bg-light);
-  --bg-page-rgb: var(--bg-light-rgb);
-  --bg-card: var(--bg-light-card);
-  --bg-card-rgb: var(--bg-light-card-rgb);
-  --text-main: var(--text-light-main);
-  --text-muted: var(--text-light-muted);
-  --border-color: var(--border-light);
-  --glass-shadow: var(--glass-shadow-light);
+/* Dark Theme Override Class */
+[data-theme="dark"] {
+  --bg-page: var(--bg-dark);
+  --bg-page-rgb: var(--bg-dark-rgb);
+  --bg-card: var(--bg-dark-card);
+  --bg-card-rgb: var(--bg-dark-card-rgb);
+  --text-main: var(--text-dark-main);
+  --text-muted: var(--text-dark-muted);
+  --border-color: var(--border-dark);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 /* Animations Definitions */
-@keyframes pulseGreen {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 163, 85, 0.7); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 163, 85, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 163, 85, 0); }
+@keyframes pulseOrange {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(242, 100, 25, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(242, 100, 25, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(242, 100, 25, 0); }
 }
 
 @keyframes float {

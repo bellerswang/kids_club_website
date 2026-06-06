@@ -2,9 +2,29 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
+  initAccountNavigation();
   initScrollReveal();
   initTestimonialSlider();
 });
+
+function initAccountNavigation() {
+  const desktopNav = document.querySelector('.desktop-nav');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  if (desktopNav) {
+    const accountLink = document.createElement('a');
+    accountLink.href = 'dashboard.html';
+    accountLink.className = 'btn btn-outline account-link';
+    accountLink.textContent = '登录 / 用户中心';
+    desktopNav.appendChild(accountLink);
+  }
+
+  if (mobileMenu) {
+    const item = document.createElement('li');
+    item.innerHTML = '<a href="dashboard.html" class="mobile-link">登录 / 用户中心</a>';
+    mobileMenu.appendChild(item);
+  }
+}
 
 /* 1. Header Scroll Shrink & Mobile Sidebar Navigation */
 function initNavbar() {

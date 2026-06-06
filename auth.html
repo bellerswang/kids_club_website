@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="飞跃未来少儿学院用户登录与注册。">
+  <title>登录与注册 - 飞跃未来少儿学院</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <header class="site-header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="images/logo.svg" alt="飞跃未来少儿学院 Sunbridge" class="light-logo">
+        <img src="images/logo-white.svg" alt="飞跃未来少儿学院 Sunbridge" class="dark-logo">
+      </a>
+      <a href="index.html" class="btn btn-outline">返回首页</a>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-shell">
+      <section class="auth-card" aria-labelledby="auth-title">
+        <div class="auth-heading">
+          <h1 id="auth-title">欢迎回来</h1>
+          <p>登录后查看个人资料和学院服务。</p>
+        </div>
+
+        <div id="auth-status" class="auth-status" role="status" aria-live="polite" hidden></div>
+
+        <div class="auth-tabs" role="tablist" aria-label="账号操作">
+          <button class="auth-tab active" type="button" role="tab" aria-selected="true" data-auth-tab="login">登录</button>
+          <button class="auth-tab" type="button" role="tab" aria-selected="false" data-auth-tab="register">注册</button>
+          <button class="auth-tab" type="button" role="tab" aria-selected="false" data-auth-tab="reset">重置密码</button>
+        </div>
+
+        <form id="login-form" data-auth-panel="login">
+          <div class="form-group">
+            <label class="form-label" for="login-email">电子邮箱</label>
+            <input class="form-control" id="login-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="login-password">密码</label>
+            <input class="form-control" id="login-password" name="password" type="password" autocomplete="current-password" minlength="8" required>
+          </div>
+          <button class="btn btn-primary" type="submit" style="width:100%">登录</button>
+          <div class="auth-divider">或者</div>
+          <button class="btn btn-outline" id="google-login" type="button" style="width:100%">使用 Google 登录</button>
+        </form>
+
+        <form id="register-form" data-auth-panel="register" hidden>
+          <div class="form-group">
+            <label class="form-label" for="register-name">姓名</label>
+            <input class="form-control" id="register-name" name="full_name" type="text" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="register-email">电子邮箱</label>
+            <input class="form-control" id="register-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="register-password">密码</label>
+            <input class="form-control" id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="register-password-confirmation">确认密码</label>
+            <input class="form-control" id="register-password-confirmation" name="password_confirmation" type="password" autocomplete="new-password" minlength="8" required>
+          </div>
+          <button class="btn btn-primary" type="submit" style="width:100%">创建家长账号</button>
+        </form>
+
+        <form id="reset-form" data-auth-panel="reset" hidden>
+          <div class="form-group">
+            <label class="form-label" for="reset-email">注册邮箱</label>
+            <input class="form-control" id="reset-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <button class="btn btn-tech" type="submit" style="width:100%">发送密码重置邮件</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

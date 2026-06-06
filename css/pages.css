@@ -7,7 +7,7 @@
   width: 500px;
   height: 500px;
   border-radius: var(--radius-round);
-  background: radial-gradient(circle, rgba(0, 180, 216, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(242, 100, 25, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
   filter: blur(50px);
   pointer-events: none;
   z-index: 0;
@@ -17,19 +17,19 @@
 .blob-1 {
   top: -10%;
   right: -5%;
-  background: radial-gradient(circle, rgba(0, 163, 85, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(242, 100, 25, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 .blob-2 {
   top: 50%;
   left: -10%;
-  background: radial-gradient(circle, rgba(0, 82, 204, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(217, 93, 20, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 .blob-3 {
   bottom: 5%;
   right: -5%;
-  background: radial-gradient(circle, rgba(0, 180, 216, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(231, 111, 81, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 /* 1. HOMEPAGE SPECIFIC STYLING */
@@ -60,9 +60,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 80% 20%, rgba(0, 180, 216, 0.15) 0%, transparent 40%),
-              radial-gradient(circle at 20% 80%, rgba(0, 163, 85, 0.15) 0%, transparent 40%),
-              linear-gradient(180deg, rgba(10, 14, 23, 0.2) 0%, var(--bg-page) 100%);
+  background: radial-gradient(circle at 80% 20%, rgba(242, 100, 25, 0.12) 0%, transparent 40%),
+              radial-gradient(circle at 20% 80%, rgba(231, 111, 81, 0.12) 0%, transparent 40%),
+              linear-gradient(180deg, rgba(var(--bg-page-rgb), 0.2) 0%, var(--bg-page) 100%);
 }
 
 .hero-grid {
@@ -176,9 +176,9 @@
   font-size: 1.2rem;
 }
 
-.badge-icon.green { background-color: rgba(0, 163, 85, 0.2); color: var(--color-badminton); }
-.badge-icon.blue { background-color: rgba(0, 82, 204, 0.2); color: #3b82f6; }
-.badge-icon.cyan { background-color: rgba(0, 180, 216, 0.2); color: var(--color-tech); }
+.badge-icon.green { background-color: rgba(242, 100, 25, 0.15); color: var(--color-badminton); }
+.badge-icon.blue { background-color: rgba(217, 93, 20, 0.15); color: var(--color-academic); }
+.badge-icon.cyan { background-color: rgba(231, 111, 81, 0.15); color: var(--color-tech); }
 
 .badge-text h4 {
   font-size: 0.9rem;
@@ -245,9 +245,9 @@
   box-shadow: var(--box-shadow-sm);
 }
 
-.pillar-badminton { background: linear-gradient(135deg, var(--color-badminton), #2ec4b6); }
-.pillar-academic { background: linear-gradient(135deg, var(--color-academic), #4361ee); }
-.pillar-tech { background: linear-gradient(135deg, var(--color-tech), #7209b7); }
+.pillar-badminton { background: linear-gradient(135deg, var(--color-badminton), #ff8a5c); }
+.pillar-academic { background: linear-gradient(135deg, var(--color-academic), #f26419); }
+.pillar-tech { background: linear-gradient(135deg, var(--color-tech), #ff8a5c); }
 
 .pillar-card h3 {
   font-size: 1.5rem;
@@ -587,7 +587,7 @@
   font-weight: 700;
   padding: 4px 12px;
   border-radius: var(--radius-pill);
-  background-color: rgba(0, 82, 204, 0.15);
+  background-color: rgba(217, 93, 20, 0.15);
   color: var(--color-academic);
 }
 

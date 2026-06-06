@@ -730,6 +730,10 @@
   .program-hero-content h1 {
     font-size: 2.2rem;
   }
+  .hero-visual {
+    flex-direction: column;
+    width: 100%;
+  }
   .badge-top-left, .badge-bottom-right {
     position: static;
     margin-top: 10px;

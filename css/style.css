@@ -81,17 +81,23 @@ button {
   z-index: 1000;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  background-color: rgba(var(--bg-page-rgb), 0.75);
+  border-top: 3px solid var(--color-badminton);
+  border-bottom: 1px solid rgba(242, 100, 25, 0.05);
+  background-color: rgba(var(--bg-page-rgb), 0.85);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 2px 15px rgba(43, 43, 43, 0.02);
   transition: var(--transition-smooth);
 }
 
 .site-header.scrolled {
   height: var(--height-header-shrink);
-  background-color: rgba(var(--bg-page-rgb), 0.9);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(var(--bg-page-rgb), 0.95);
+  box-shadow: 0 4px 30px rgba(43, 43, 43, 0.05);
+}
+
+[data-theme="dark"] .site-header.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .nav-container {
@@ -109,9 +115,14 @@ button {
 }
 
 .brand-logo img {
-  height: 52px;
+  height: 64px; /* Increased from 52px to be more prominent */
   width: auto;
   transition: var(--transition-fast);
+  filter: drop-shadow(0 2px 8px rgba(242, 100, 25, 0.12));
+}
+
+.site-header.scrolled .brand-logo img {
+  height: 52px; /* Shrinks elegantly when page is scrolled */
 }
 
 .brand-logo:hover img {
@@ -317,6 +328,16 @@ main {
 .section {
   padding: 90px 0;
   position: relative;
+  background-color: var(--bg-page);
+  transition: background-color 0.4s ease;
+}
+
+.section:nth-of-type(even) {
+  background-color: #f7f6f2; /* Warm subtle cream band */
+}
+
+[data-theme="dark"] .section:nth-of-type(even) {
+  background-color: rgba(20, 28, 45, 0.45); /* Darker cards contrast band */
 }
 
 .section-title-wrapper {

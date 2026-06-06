@@ -125,6 +125,11 @@
 
 .glass-card:hover {
   transform: translateY(-5px);
+  border-color: rgba(242, 100, 25, 0.15);
+  box-shadow: 0 12px 30px rgba(43, 43, 43, 0.08);
+}
+
+[data-theme="dark"] .glass-card:hover {
   border-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }

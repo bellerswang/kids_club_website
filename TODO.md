@@ -1,6 +1,6 @@
 # Project TODO
 
-Last reviewed: 2026-06-06
+Last reviewed: 2026-06-07
 
 This file is the source of truth for unfinished engineering work. Update it during every implementation task.
 
@@ -73,6 +73,11 @@ This file is the source of truth for unfinished engineering work. Update it duri
 - Acceptance criteria: Production email uses the academy domain; automated sign-up abuse is limited; alerting exists for unusual authentication activity; a documented restore test succeeds.
 
 ## Recently Completed
+
+### KC-012: Migrate the public brand and location
+
+- Completed: 2026-06-07
+- Result: Removed the former Chinese name and the `Academy` suffix, standardized the sole public brand as `Sunbridge`, changed all public campus addresses and campus labels to Barnet, London, and updated SEO text, accessibility labels, copyright text, and architecture documentation.
 
 ### KC-011: Align website branding and styling with PDF flyer guidelines
 

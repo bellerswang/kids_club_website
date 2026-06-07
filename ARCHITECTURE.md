@@ -1,6 +1,6 @@
 # Project Architecture
 
-Last reviewed: 2026-06-06
+Last reviewed: 2026-06-07
 
 ## Current Architecture
 
@@ -40,6 +40,13 @@ When configured, Supabase Auth owns sessions and credentials. The `public.profil
 - Deployment configuration is not currently stored in the repository.
 - Quality checks are manual; JavaScript can be syntax-checked with `node --check`.
 
+### Brand And Location
+
+- The sole public brand name is `Sunbridge`, with no Chinese name or `Academy` suffix.
+- The public location is `Barnet, London, United Kingdom`.
+- The public support email is `support@sunbridgeacademy.com`.
+- Historical Chinese branding and Beijing campus addresses must not be reintroduced in new pages or documentation.
+
 ## Planned Architecture
 
 The proposed direction is a dynamic academy management platform backed by FastAPI and PostgreSQL. The detailed proposal, data model, authentication flow, course-credit transactions, media storage, and staged rollout are documented in `backend_architecture_plan.md`.
@@ -77,6 +84,7 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | 2026-06-06 | Use Supabase Auth and managed PostgreSQL for the phase-one login and profile system. | Active | It supplies integrated identity, relational storage, and RLS while preserving PostgreSQL portability. |
 | 2026-06-06 | Keep privileged role changes in the database through an administrator-only function. | Active | Browser UI checks alone are not an authorization boundary, and no service key may be exposed client-side. |
 | 2026-06-06 | Align the default site style with corporate flyers, defaulting to a clean light theme with orange branding accents. | Active | Matches the physical flyer materials and unifies the brand color identity (orange/charcoal). |
+| 2026-06-07 | Use `Sunbridge` as the sole public name, with no Chinese name or `Academy` suffix, and Barnet, London as the public location. | Active | Keeps brand, SEO, contact details, and future content consistent with the current identity and operating area. |
 
 ## Architecture Change Log
 
@@ -87,3 +95,4 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | 2026-06-06 | Added managed PostgreSQL options and narrowed the shortlist to Supabase or Neon. | KC-008 |
 | 2026-06-06 | Implemented the Supabase login, registration, password recovery, profile dashboard, role administration, and RLS migration. | KC-008 |
 | 2026-06-06 | Vectorized the corporate logo (removing bottom tagline), aligned the global stylesheets to use the warm orange theme, set light mode as default, and integrated SVG logos. | KC-011 |
+| 2026-06-07 | Finalized the sole brand name as Sunbridge and migrated all public Beijing campus addresses to Barnet, London. | KC-012 |

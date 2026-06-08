@@ -1,51 +1,49 @@
 # Project Architecture
 
-Last reviewed: 2026-06-07
+Last reviewed: 2026-06-08
 
 ## Current Architecture
 
 ### System Shape
 
-The project is a static, multi-page Chinese website for a children's academy. It runs directly in the browser without a build step or package manager. A Supabase authentication and profile-management integration is implemented but remains inactive until project credentials and the database migration are deployed.
+The project is a static, bilingual multi-page website for Sunbridge. English is the default language and visitors can switch to Chinese in the browser. It runs without a build step or package manager. The public content is intentionally limited to claims supported by the current Sunbridge brochure. A Supabase authentication and profile-management integration remains in the repository but is hidden from the public site and inactive.
 
 ### Frontend
 
-- Entry pages: `index.html`, `about.html`, `academics.html`, `badminton.html`, `programming.html`, and `contact.html`.
-- Authentication pages:
-  - `auth.html` provides email registration, email/password login, Google OAuth initiation, and password-reset requests.
-  - `dashboard.html` provides authenticated profile management, password updates, logout, and administrator role management.
+- Public entry pages: `index.html`, `about.html`, `guitar.html`, `badminton.html`, `programming.html`, `holiday-camp.html`, and `contact.html`.
+- `academics.html` is a no-index compatibility redirect to `guitar.html`.
+- `auth.html` and `dashboard.html` are no-index redirects to the homepage while login is hidden.
 - Shared styling:
   - `css/variables.css` defines design tokens and theme values.
-  - `css/style.css` defines global layout and site structure.
-  - `css/components.css` defines reusable UI components.
-  - `css/pages.css` defines page-specific presentation.
+  - `css/style.css` defines the current global layout, reusable components, page presentation, and responsive states.
+  - `css/components.css` and `css/pages.css` remain legacy stylesheets and are not loaded by the current public pages.
 - Shared browser behavior:
-  - `js/main.js` controls the responsive navigation, scroll reveals, and testimonial slider.
-  - `js/form.js` controls form validation, toast messages, local prototype storage, and the programming-page simulator.
+  - `js/main.js` owns the English/Chinese content dictionary, language preference, responsive navigation, and scroll reveals.
+  - `js/form.js` is retained legacy code and is not loaded by the current public pages.
   - `js/supabase-client.js` creates the browser Supabase client from `js/supabase-config.js`.
   - `js/auth.js` and `js/dashboard.js` implement authentication and account-management flows.
 - Static media lives in `images/`.
 
 ### Data Flow
 
-All pages and assets are served as static files. Booking and contact forms do not send data to a server. Form submissions are intercepted by `js/form.js` and stored only in the visitor's browser under the `academy_bookings` localStorage key.
+All public pages and assets are served as static files. There are no public booking or contact forms; visitors use the brochure-provided phone, email, or website details. The selected language is stored in the visitor's browser under the `sunbridge-language` localStorage key.
 
-When configured, Supabase Auth owns sessions and credentials. The `public.profiles` PostgreSQL table stores non-secret profile fields and application roles. Row Level Security limits ordinary users to their own profile; role changes go through the administrator-only `set_user_role` database function.
+If reactivated and configured later, Supabase Auth owns sessions and credentials. The `public.profiles` PostgreSQL table stores non-secret profile fields and application roles. Row Level Security limits ordinary users to their own profile; role changes go through the administrator-only `set_user_role` database function.
 
 ### Operational Boundaries
 
-- Supabase is the selected managed backend for authentication and profiles; the repository contains the migration but no cloud project credentials.
-- No production persistence or administrator notification is implemented.
-- Google Fonts are loaded from an external stylesheet.
+- Supabase remains the selected managed backend for a future login launch; the repository contains the implementation and migration but no cloud project credentials.
+- No login link, account UI, public form, production persistence, or administrator notification is active.
 - Deployment configuration is not currently stored in the repository.
-- Quality checks are manual; JavaScript can be syntax-checked with `node --check`.
+- Quality checks are manual; JavaScript can be syntax-checked with `node --check`, and architecture documentation has a repository validation script.
 
 ### Brand And Location
 
 - The sole public brand name is `Sunbridge`, with no Chinese name or `Academy` suffix.
-- The public location is `Barnet, London, United Kingdom`.
-- The public support email is `support@sunbridgeacademy.com`.
-- Historical Chinese branding and Beijing campus addresses must not be reintroduced in new pages or documentation.
+- The current brochure is the source of truth for public programme descriptions and contact claims.
+- Public pages state only that classes and camps take place at local partner schools, with exact venues supplied at booking confirmation.
+- The public contact email is `info@sunbridgeacademy.co.uk`; the brochure phone number remains a placeholder pending a real number.
+- Historical Chinese branding, unsupported locations, and unverified programme claims must not be reintroduced.
 
 ## Planned Architecture
 
@@ -84,7 +82,8 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | 2026-06-06 | Use Supabase Auth and managed PostgreSQL for the phase-one login and profile system. | Active | It supplies integrated identity, relational storage, and RLS while preserving PostgreSQL portability. |
 | 2026-06-06 | Keep privileged role changes in the database through an administrator-only function. | Active | Browser UI checks alone are not an authorization boundary, and no service key may be exposed client-side. |
 | 2026-06-06 | Align the default site style with corporate flyers, defaulting to a clean light theme with orange branding accents. | Active | Matches the physical flyer materials and unifies the brand color identity (orange/charcoal). |
-| 2026-06-07 | Use `Sunbridge` as the sole public name, with no Chinese name or `Academy` suffix, and Barnet, London as the public location. | Active | Keeps brand, SEO, contact details, and future content consistent with the current identity and operating area. |
+| 2026-06-07 | Use `Sunbridge` as the sole public name, with no Chinese name or `Academy` suffix, and Barnet, London as the public location. | Superseded by 2026-06-08 brochure-source decision | The current brochure does not name Barnet and says venues are local partner schools confirmed at booking. |
+| 2026-06-08 | Treat the current Sunbridge brochure as the source of truth for public website claims, default to English with a Chinese switch, and hide login until it is explicitly relaunched. | Active | Keeps the website concise, verifiable, and aligned with current customer-facing material while preserving dormant authentication work. |
 
 ## Architecture Change Log
 
@@ -96,3 +95,4 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | 2026-06-06 | Implemented the Supabase login, registration, password recovery, profile dashboard, role administration, and RLS migration. | KC-008 |
 | 2026-06-06 | Vectorized the corporate logo (removing bottom tagline), aligned the global stylesheets to use the warm orange theme, set light mode as default, and integrated SVG logos. | KC-011 |
 | 2026-06-07 | Finalized the sole brand name as Sunbridge and migrated all public Beijing campus addresses to Barnet, London. | KC-012 |
+| 2026-06-08 | Rebuilt the public site around the current brochure, added English/Chinese switching with English default, added Guitar and Holiday Camp pages, and hid all login surfaces. | KC-013 |

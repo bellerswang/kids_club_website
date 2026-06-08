@@ -1,356 +1,47 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sunbridge 少儿羽毛球训练营 - 由省队退役专业教练及国家级裁判领衔。为5-16岁少儿提供专业的分级羽毛球训练课程，增强体能，塑造意志，培养团队精神。">
-  <title>少儿羽毛球训练营 - Sunbridge</title>
+  <meta name="description" content="Beginner-friendly indoor badminton lessons for children and teenagers at Sunbridge.">
+  <title>Badminton Lessons | Sunbridge</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/pages.css">
 </head>
-<body>
-
-  <!-- Top Notification Bar -->
-  <div style="background: linear-gradient(90deg, var(--color-badminton), var(--color-tech)); color: #fff; text-align: center; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; z-index: 1001; position: relative;">
-    🏸 招新优惠：新学员报名羽毛球班，即赠送定制专业训练球拍与队服一套！
-  </div>
-
-  <!-- Header Section -->
-  <header class="site-header" id="site-header">
-    <div class="container nav-container">
-      <a href="index.html" class="brand-logo" id="header-logo">
-        <img src="images/logo.svg" alt="Sunbridge" class="light-logo">
-        <img src="images/logo-white.svg" alt="Sunbridge" class="dark-logo">
-      </a>
-      
-      <!-- Desktop Navigation -->
-      <nav class="desktop-nav">
-        <ul class="nav-menu">
-          <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
-          <li class="nav-item nav-item-has-dropdown active">
-            <a href="#" class="nav-link">特色课程 ▾</a>
-            <ul class="dropdown-menu">
-              <li><a href="badminton.html" class="dropdown-link">🏸 少儿羽毛球</a></li>
-              <li><a href="academics.html" class="dropdown-link">📚 学科同步学习</a></li>
-              <li><a href="programming.html" class="dropdown-link">🤖 AI 与 编程</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a href="about.html" class="nav-link">关于我们</a></li>
-          <li class="nav-item"><a href="contact.html" class="nav-link">联系与校区</a></li>
-        </ul>
-        <a href="index.html#booking" class="btn btn-primary btn-pulse" style="padding: 10px 22px; font-size: 0.9rem; margin-left: 20px;">预约免费试听</a>
+<body data-title-key="meta.badminton.title" data-description-key="meta.badminton.description">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Sunbridge</a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="index.html" data-i18n="nav.home">Home</a><a href="about.html" data-i18n="nav.about">About</a><a class="active" href="index.html#lessons" data-i18n="nav.lessons">Lessons</a><a href="holiday-camp.html" data-i18n="nav.camp">Holiday Camp</a><a href="contact.html" data-i18n="nav.contact">Contact</a>
       </nav>
-
-      <!-- Mobile Menu Toggle Button -->
-      <div class="mobile-toggle" id="mobile-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="nav-actions">
+        <div class="language-switch" aria-label="Language"><button type="button" data-language-option="en">EN</button><button type="button" data-language-option="zh">中文</button></div>
+        <a class="button button-small" href="contact.html" data-i18n="nav.enquire">Enquire</a>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
       </div>
     </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation"><a href="index.html" data-i18n="nav.home">Home</a><a href="about.html" data-i18n="nav.about">About</a><a href="index.html#lessons" data-i18n="nav.lessons">Lessons</a><a href="holiday-camp.html" data-i18n="nav.camp">Holiday Camp</a><a href="contact.html" data-i18n="nav.contact">Contact</a></nav>
   </header>
-
-  <!-- Mobile Drawer Menu Overlay -->
-  <nav class="mobile-nav" id="mobile-nav">
-    <ul class="mobile-menu">
-      <li><a href="index.html" class="mobile-link">首页</a></li>
-      <li>
-        <span class="mobile-link" style="color: var(--text-muted);">特色课程</span>
-        <ul class="mobile-sub-menu">
-          <li><a href="badminton.html" class="mobile-sub-link active">🏸 少儿羽毛球</a></li>
-          <li><a href="academics.html" class="mobile-sub-link">📚 学科同步学习</a></li>
-          <li><a href="programming.html" class="mobile-sub-link">🤖 AI 与 编程</a></li>
-        </ul>
-      </li>
-      <li><a href="about.html" class="mobile-link">关于我们</a></li>
-      <li><a href="contact.html" class="mobile-link">联系与校区</a></li>
-    </ul>
-    <a href="index.html#booking" class="btn btn-primary btn-pulse" style="width: 100%; text-align: center; margin-top: 30px;">立即预约试听</a>
-  </nav>
-
   <main>
-    <!-- Background Glow Blobs -->
-    <div class="glow-blob blob-1"></div>
-
-    <!-- Program Hero -->
-    <section class="program-hero">
-      <div class="container program-hero-grid">
-        <div class="program-hero-content">
-          <div class="program-highlight-tag highlight-badminton">🏸 专业少儿体育</div>
-          <h1>少儿羽毛球训练营</h1>
-          <p>
-            强健的体魄是优秀人生的基石。我们提供从兴趣启蒙到专业对抗的系统性分级羽毛球课程，通过科学的中小强度专项对抗和基本功锤炼，帮孩子改善视力、矫正姿态、增强协调力，培养不怕苦不怕输的精神！
-          </p>
-          <a href="#levels" class="btn btn-primary">查看分班等级</a>
-        </div>
-        <div>
-          <img src="images/badminton.png" alt="少儿羽毛球训练" style="border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: var(--glass-shadow);">
-        </div>
-      </div>
-    </section>
-
-    <!-- Program Highlights (Benefits) -->
-    <section class="section" style="border-bottom: 1px solid var(--border-color);">
-      <div class="container">
-        <div class="section-title-wrapper" style="margin-bottom: 48px;">
-          <span class="section-tag">运动赋能</span>
-          <h2 class="section-title" style="font-size: 2rem;">打羽毛球能带给孩子什么？</h2>
-        </div>
-
-        <div class="grid grid-3">
-          <div class="glass-card reveal">
-            <h3 style="color: var(--color-badminton); font-size: 1.3rem; margin-bottom: 12px;">👀 保护并改善视力</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">
-              球的高速移动要求眼球不停跟进，有助于活跃眼部睫状肌，促进眼部血液循环，是目前医学界公认预防和改善近视最有效的体育运动之一。
-            </p>
-          </div>
-          <div class="glass-card reveal" style="animation-delay: 0.1s;">
-            <h3 style="color: var(--color-badminton); font-size: 1.3rem; margin-bottom: 12px;">📏 纠正身姿 &amp; 促进增高</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">
-              大量的跳跃、大跨步以及伸展动作，能够有效刺激骨骼骺软骨细胞，拉伸四肢关节，强化脊柱核心肌肉群，助力孩子科学长高，挺拔身姿。
-            </p>
-          </div>
-          <div class="glass-card reveal" style="animation-delay: 0.2s;">
-            <h3 style="color: var(--color-badminton); font-size: 1.3rem; margin-bottom: 12px;">🧠 锻炼反应力与专注力</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">
-              羽毛球需要在零点几秒内判断落点并做出击球反应。通过对大脑的反复快速刺激，可以极大提高神经系统反应敏捷度，对课业专注力大有裨益。
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Level Breakdown Section -->
-    <section class="section" id="levels">
-      <div class="container">
-        <div class="section-title-wrapper">
-          <span class="section-tag">科学分级体系</span>
-          <h2 class="section-title">分级课程介绍</h2>
-          <p class="section-desc">根据孩子年龄段与身体发育状况，定制科学的教学计划，拒绝粗暴的一刀切式训练。</p>
-        </div>
-
-        <div class="grid grid-3 swipe-on-mobile">
-          <!-- Level 1 -->
-          <div class="glass-card card-badminton reveal">
-            <span class="age-range" style="background-color: rgba(0, 163, 85, 0.15); color: var(--color-badminton); margin-bottom: 16px; display: inline-block;">L1 • 基础启蒙班</span>
-            <h3 style="margin-bottom: 12px;">适合年龄: 5-8 岁</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
-              重在激发运动兴趣，发展基础体能（跑步、跳跃、投掷、闪转腾挪）。通过趣味羽毛球游戏，学习正确握拍、颠球、原地挥拍击球和基础的米字步法。
-            </p>
-            <ul class="pillar-features-list" style="margin-bottom: 0;">
-              <li>班级配比：1名教练对6名学员</li>
-              <li>训练周期：1.5小时/课</li>
-              <li>教学重点：手脑眼协调、接球感培养</li>
-            </ul>
-          </div>
-
-          <!-- Level 2 -->
-          <div class="glass-card card-badminton reveal" style="animation-delay: 0.1s;">
-            <span class="age-range" style="background-color: rgba(0, 163, 85, 0.15); color: var(--color-badminton); margin-bottom: 16px; display: inline-block;">L2 • 技能提升班</span>
-            <h3 style="margin-bottom: 12px;">适合年龄: 9-12 岁</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
-              建立规范的击球姿势体系。系统练习高远球、劈吊球、网前挑球、基础杀球及前场跑动步法。强化多球训练，逐步引导孩子参与半场与全场实战对抗。
-            </p>
-            <ul class="pillar-features-list" style="margin-bottom: 0;">
-              <li>班级配比：1名教练对8名学员</li>
-              <li>训练周期：2.0小时/课</li>
-              <li>教学重点：技术定型、战术步法融合</li>
-            </ul>
-          </div>
-
-          <!-- Level 3 -->
-          <div class="glass-card card-badminton reveal" style="animation-delay: 0.2s;">
-            <span class="age-range" style="background-color: rgba(0, 163, 85, 0.15); color: var(--color-badminton); margin-bottom: 16px; display: inline-block;">L3 • 精英实战班</span>
-            <h3 style="margin-bottom: 12px;">适合年龄: 13-16 岁</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
-              战术与实战对抗。重点提升进攻杀球、防守接杀、双打配合和全场跑动体能耐力。教授裁判规则与赛场技巧，带队参加市区级青少年羽毛球公开赛。
-            </p>
-            <ul class="pillar-features-list" style="margin-bottom: 0;">
-              <li>班级配比：1名教练对8名学员</li>
-              <li>训练周期：2.0小时/课</li>
-              <li>教学重点：战术素养、竞技心态、体能</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Schedule Grid -->
-    <section class="section" style="background-color: rgba(255, 255, 255, 0.01); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
-      <div class="container">
-        <div class="section-title-wrapper">
-          <span class="section-tag">课时与周期</span>
-          <h2 class="section-title">训练日程安排表</h2>
-          <p class="section-desc">我们提供周中与周末的多时间段灵活排课，方便您合理安排孩子的文化课和运动时间。</p>
-        </div>
-
-        <div class="schedule-table-wrapper reveal">
-          <table class="schedule-table">
-            <thead>
-              <tr>
-                <th>时段</th>
-                <th>星期六</th>
-                <th>星期日</th>
-                <th>星期三 (周中夜场)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>上午 (09:00 - 11:00)</strong></td>
-                <td>L1 基础启蒙班 (Barnet Campus)<br><span class="schedule-badge" style="background-color: rgba(0, 163, 85, 0.15); color: var(--color-badminton);">热招中</span></td>
-                <td>L2 技能提升班 (Barnet Campus)<br><span class="schedule-badge" style="background-color: rgba(0, 163, 85, 0.15); color: var(--color-badminton);">热招中</span></td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td><strong>下午 (14:00 - 16:00)</strong></td>
-                <td>L2 技能提升班 (Barnet Campus)<br><span class="schedule-badge" style="background-color: rgba(0, 163, 85, 0.15); color: var(--color-badminton);">热招中</span></td>
-                <td>L1 基础启蒙班 (Barnet Campus)<br><span class="schedule-badge" style="background-color: rgba(255, 107, 53, 0.15); color: var(--color-accent);">仅剩2名</span></td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td><strong>傍晚 (16:30 - 18:30)</strong></td>
-                <td>L3 精英实战班 (Barnet Campus)<br><span class="schedule-badge" style="background-color: rgba(255, 107, 53, 0.15); color: var(--color-accent);">仅剩1名</span></td>
-                <td>L2 技能提升班 (Barnet Campus)<br><span class="schedule-badge" style="background-color: rgba(0, 163, 85, 0.15); color: var(--color-badminton);">热招中</span></td>
-                <td>L3 精英战术集训班 (18:30-20:30)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Coaches Profile -->
+    <section class="page-hero"><div class="container narrow reveal"><p class="eyebrow" data-i18n="badminton.eyebrow">Badminton Lessons</p><h1 data-i18n="badminton.title">Movement, teamwork and confidence</h1><p class="lead" data-i18n="badminton.intro">Beginner-friendly indoor coaching that develops coordination, agility and enjoyment of sport.</p></div></section>
     <section class="section">
-      <div class="container">
-        <div class="section-title-wrapper">
-          <span class="section-tag">师资力量</span>
-          <h2 class="section-title">教练天团</h2>
-          <p class="section-desc">严苛的筛选体系，确保所有执教教练均具备极高技术水平以及丰富的少儿心理和体能培训经验。</p>
+      <div class="container detail-grid">
+        <div class="detail-main reveal">
+          <h2 data-i18n="badminton.learn.title">What children learn</h2>
+          <ul class="check-list">
+            <li data-i18n="badminton.learn.1">Grip, stance and footwork</li><li data-i18n="badminton.learn.2">Hand-eye coordination</li><li data-i18n="badminton.learn.3">Serving and rally skills</li><li data-i18n="badminton.learn.4">Agility and movement</li><li data-i18n="badminton.learn.5">Rules, teamwork and sportsmanship</li>
+          </ul>
         </div>
-
-        <div class="team-grid reveal swipe-on-mobile">
-          <!-- Coach 1 -->
-          <div class="glass-card team-card">
-            <div class="team-avatar-wrapper">
-              <div style="background: var(--color-badminton-glow); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:3rem;">🦁</div>
-            </div>
-            <h3>王强 <span>总教练</span></h3>
-            <p class="team-role">省队退役主力 • 国家一级运动员</p>
-            <p class="team-bio">
-              12年羽毛球职业训练经验，多次获得全国羽毛球锦标赛男单、男双前八名。执教少儿羽毛球已逾8年，对孩子亲和力高，以科学基本功训练和严密的动作修正见长。
-            </p>
-          </div>
-
-          <!-- Coach 2 -->
-          <div class="glass-card team-card">
-            <div class="team-avatar-wrapper">
-              <div style="background: var(--color-badminton-glow); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:3rem;">🐯</div>
-            </div>
-            <h3>刘芳 <span>高级教练</span></h3>
-            <p class="team-role">北京体育大学硕士 • 国家一级裁判</p>
-            <p class="team-bio">
-              主攻运动学与青少年少儿心理干预，在羽毛球战术与少儿体能开发方面有着深厚造诣。擅长快乐羽毛球教学法，深受L1和L2阶段孩子的喜爱。
-            </p>
-          </div>
-
-          <!-- Coach 3 -->
-          <div class="glass-card team-card">
-            <div class="team-avatar-wrapper">
-              <div style="background: var(--color-badminton-glow); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:3rem;">🦅</div>
-            </div>
-            <h3>Dmitry <span>外籍技术专家</span></h3>
-            <p class="team-role">原东欧国家队特邀青少年外教</p>
-            <p class="team-bio">
-              拥有十年以上海外少儿羽毛球授课经验，推崇启发式教学和高强度对抗游戏。全英文/双语授课，让孩子在挥拍出汗的同时，锻炼口语和跨文化沟通力。
-            </p>
-          </div>
-        </div>
+        <aside class="detail-card reveal">
+          <h3 data-i18n="details.title">Lesson details</h3>
+          <dl><div><dt data-i18n="details.ages">Ages</dt><dd data-i18n="badminton.ages">6–10 and 11+</dd></div><div><dt data-i18n="details.group">Group size</dt><dd data-i18n="badminton.group">4–8 students</dd></div><div><dt data-i18n="details.level">Level</dt><dd data-i18n="badminton.level">Beginner friendly</dd></div><div><dt data-i18n="details.format">Format</dt><dd data-i18n="badminton.format">Indoor lessons</dd></div></dl>
+        </aside>
       </div>
     </section>
-
-    <!-- Page CTA Section -->
-    <section class="section" style="background-color: var(--color-badminton); color: #fff; text-align: center;">
-      <div class="container reveal">
-        <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; color:#fff;">立刻让孩子加入我们的球场！</h2>
-        <p style="font-size: 1.15rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9;">
-          预约一节 60 分钟的“专业教练带训 + 身体敏捷性诊断”免费体验课，全套专业球拍与运动服由我们提供！
-        </p>
-        <a href="index.html#booking" class="btn btn-outline" style="border-color:#fff; color:#fff; font-size:1.1rem; padding: 16px 36px; background-color: rgba(255,255,255,0.15)">立即预约免费试听</a>
-      </div>
-    </section>
+    <section class="section section-soft"><div class="container narrow reveal"><p class="eyebrow" data-i18n="badminton.why.eyebrow">Why Badminton?</p><h2 data-i18n="badminton.why.title">Healthy habits through active learning</h2><p data-i18n="badminton.why.body">Badminton supports fitness, focus and confidence while giving children a positive way to learn with others.</p></div></section>
+    <section class="cta-section"><div class="container cta-card reveal"><div><p class="eyebrow" data-i18n="schedule.eyebrow">Timetable & Fees</p><h2 data-i18n="schedule.title">Contact us for current lesson times</h2></div><a class="button" href="contact.html" data-i18n="schedule.button">Ask about lessons</a></div></section>
   </main>
-
-  <!-- Footer Section -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-logo-desc">
-        <a href="index.html" class="brand-logo" style="color: #fff;">
-          <img src="images/logo-white.svg" alt="Sunbridge">
-        </a>
-        <p>
-          我们致力于通过卓越的运动训练、系统的文化辅导和前沿的AI科技启蒙，让孩子强健身心、拓宽视野，拥抱无限可能的明天。
-        </p>
-        <div class="social-links">
-          <a href="#" class="social-icon" title="官方微信">💬</a>
-          <a href="#" class="social-icon" title="小红书官方号">📕</a>
-          <a href="#" class="social-icon" title="官方微博">🐦</a>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="footer-heading">快速链接</h4>
-        <ul class="footer-links">
-          <li><a href="index.html" class="footer-link">学院首页</a></li>
-          <li><a href="about.html" class="footer-link">关于我们</a></li>
-          <li><a href="contact.html" class="footer-link">校区分布</a></li>
-          <li><a href="index.html#booking" class="footer-link">免费预约</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="footer-heading">特色课程</h4>
-        <ul class="footer-links">
-          <li><a href="badminton.html" class="footer-link">🏸 少儿羽毛球</a></li>
-          <li><a href="academics.html" class="footer-link">📚 学科学习中心</a></li>
-          <li><a href="programming.html" class="footer-link">🤖 AI与编程基地</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="footer-heading">联系我们</h4>
-        <ul class="footer-contact-info">
-          <li>
-            <span class="footer-contact-icon">📍</span>
-            <span>Barnet, London, United Kingdom</span>
-          </li>
-          <li>
-            <span class="footer-contact-icon">📞</span>
-            <span>联系电话待公布 (服务时间: 9:00 - 21:00)</span>
-          </li>
-          <li>
-            <span class="footer-contact-icon">✉️</span>
-            <span>support@sunbridgeacademy.com</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
-      <p>&copy; 2026 Sunbridge. 保留所有权利。</p>
-      <ul class="footer-bottom-links">
-        <li><a href="#" class="footer-bottom-link">使用条款</a></li>
-        <li><a href="#" class="footer-bottom-link">隐私政策</a></li>
-      </ul>
-    </div>
-  </footer>
-
-  <!-- Mobile Sticky Bottom CTA -->
-  <div class="mobile-sticky-cta">
-    <a href="index.html#booking" class="btn btn-primary" style="width: 100%; box-shadow: 0 4px 15px var(--color-badminton-glow);">预约免费体验课</a>
-  </div>
-
+  <footer class="site-footer"><div class="container footer-grid"><div><a class="brand" href="index.html">Sunbridge</a><p data-i18n="footer.tagline">Where Every Child Shines.</p></div><div><strong data-i18n="footer.explore">Explore</strong><a href="index.html#lessons" data-i18n="nav.lessons">Lessons</a><a href="holiday-camp.html" data-i18n="nav.camp">Holiday Camp</a></div><div><strong data-i18n="footer.contact">Contact</strong><a href="mailto:info@sunbridgeacademy.co.uk">info@sunbridgeacademy.co.uk</a><span>07XXX XXXXXX</span></div></div><div class="container footer-bottom"><span>© 2026 Sunbridge</span><span data-i18n="footer.location">Classes and camps at local partner schools.</span></div></footer>
   <script src="js/main.js"></script>
-  <script src="js/form.js"></script>
 </body>
 </html>

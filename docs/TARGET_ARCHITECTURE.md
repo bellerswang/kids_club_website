@@ -221,7 +221,7 @@ Production branch: main
 
 - Preview deployments 开启。
 - Build watch paths 只包含 `apps/web/*`、`packages/*` 和相关配置。
-- `wrangler.jsonc` 定义 Workers 项目名称和静态资源目录。
+- `wrangler.jsonc` 定义 Workers 项目名称、部署前构建命令和静态资源目录。
 - `public/_headers` 管理缓存和安全头。
 - `public/_redirects` 管理旧 URL 和 canonical 域名跳转。
 - Preview 和 Production 使用不同环境变量。

@@ -1,0 +1,33 @@
+---
+import { localePath, site, ui, type Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const text = ui[locale];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="footer-brand" href={localePath(locale)}>Sunbridge</a>
+      <p>{text.tagline}</p>
+    </div>
+    <div>
+      <strong>{text.explore}</strong>
+      <a href={localePath(locale, 'programmes')}>{text.nav.programmes}</a>
+      <a href={localePath(locale, 'holiday-camp')}>{text.nav.camp}</a>
+    </div>
+    <div>
+      <strong>{text.contact}</strong>
+      <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Sunbridge</span>
+    <span>{text.footerLocation}</span>
+  </div>
+</footer>

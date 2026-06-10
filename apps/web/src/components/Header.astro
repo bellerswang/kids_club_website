@@ -1,0 +1,43 @@
+---
+import { localePath, ui, type Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const text = ui[locale];
+const otherLocale: Locale = locale === 'en' ? 'zh' : 'en';
+const currentPath = Astro.url.pathname.replace(/^\/zh(?=\/|$)/, '');
+const languagePath = localePath(otherLocale, currentPath);
+---
+
+<header class="site-header">
+  <div class="container nav-container">
+    <a href={localePath(locale)} class="brand-logo" aria-label="Sunbridge home">
+      <img src="/images/logo.svg" alt="Sunbridge" />
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a class="nav-link" href={localePath(locale)}>{text.nav.home}</a>
+      <a class="nav-link" href={localePath(locale, 'about')}>{text.nav.about}</a>
+      <a class="nav-link" href={localePath(locale, 'programmes')}>{text.nav.programmes}</a>
+      <a class="nav-link" href={localePath(locale, 'holiday-camp')}>{text.nav.camp}</a>
+      <a class="nav-link" href={localePath(locale, 'contact')}>{text.nav.contact}</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="language-link" href={languagePath} lang={otherLocale === 'zh' ? 'zh-CN' : 'en'}>{text.language}</a>
+      <a class="button button-small nav-enquire" href={localePath(locale, 'contact')}>{text.nav.enquire}</a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" aria-label="Mobile navigation" data-mobile-menu>
+  <a href={localePath(locale)}>{text.nav.home}</a>
+  <a href={localePath(locale, 'about')}>{text.nav.about}</a>
+  <a href={localePath(locale, 'programmes')}>{text.nav.programmes}</a>
+  <a href={localePath(locale, 'holiday-camp')}>{text.nav.camp}</a>
+  <a href={localePath(locale, 'contact')}>{text.nav.contact}</a>
+</nav>

@@ -1,0 +1,62 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { Locale } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  locale?: Locale;
+  title: string;
+  description: string;
+}
+
+const { locale = 'en', title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header locale={locale} />
+    <main>
+      <slot />
+    </main>
+    <Footer locale={locale} />
+    <script>
+      const toggle = document.querySelector('[data-menu-toggle]');
+      const menu = document.querySelector('[data-mobile-menu]');
+      const setOpen = (open: boolean) => {
+        toggle?.classList.toggle('active', open);
+        toggle?.setAttribute('aria-expanded', String(open));
+        menu?.classList.toggle('open', open);
+        document.body.classList.toggle('menu-open', open);
+      };
+      toggle?.addEventListener('click', () => setOpen(!menu?.classList.contains('open')));
+      menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setOpen(false);
+      });
+
+      const revealElements = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('reveal-active');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        revealElements.forEach((element) => observer.observe(element));
+      } else {
+        revealElements.forEach((element) => element.classList.add('reveal-active'));
+      }
+    </script>
+  </body>
+</html>

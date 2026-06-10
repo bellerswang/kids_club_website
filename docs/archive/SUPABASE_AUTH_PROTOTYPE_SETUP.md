@@ -1,4 +1,6 @@
-# Supabase Setup
+# Archived Supabase Authentication Prototype Setup
+
+> Archived on 2026-06-08. This describes the inactive browser-authentication prototype and is not the current public-site setup guide.
 
 ## 1. Create the project
 

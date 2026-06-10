@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { localePath, type Locale } from '../data/site';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const isZh = locale === 'zh';
+const copy = isZh ? {
+  title: 'Holiday Camp | Sunbridge',
+  description: 'Sunbridge 在部分学校假期提供 Holiday Camp。请联系我们确认当前日期、地点和名额。',
+  eyebrow: 'Holiday Camp',
+  heading: '学校假期也提供 Holiday Camp',
+  intro: 'Sunbridge 在部分学校假期提供 Holiday Camp，在受监督的环境中融合创意、运动与适龄学习体验。',
+  note: 'Holiday Camp 的日期、地点、适合年龄、费用和名额会根据当前安排确认。网站不公布具体日程或固定活动清单。',
+  cta: '咨询当前 Holiday Camp',
+  button: '联系我们'
+} : {
+  title: 'Holiday Camp | Sunbridge',
+  description: 'Sunbridge provides Holiday Camps during selected school breaks. Contact us for current dates, locations and availability.',
+  eyebrow: 'Holiday Camp',
+  heading: 'Holiday Camps are available during selected school breaks',
+  intro: 'Sunbridge provides supervised Holiday Camps that bring together creative, active and age-appropriate learning experiences.',
+  note: 'Dates, locations, suitable ages, fees and availability are confirmed for each current camp. We do not publish a fixed daily schedule or guaranteed activity list.',
+  cta: 'Ask about the current Holiday Camp',
+  button: 'Contact us'
+};
+---
+
+<BaseLayout locale={locale} title={copy.title} description={copy.description}>
+  <section class="page-hero"><div class="container narrow reveal"><p class="eyebrow">{copy.eyebrow}</p><h1>{copy.heading}</h1><p>{copy.intro}</p></div></section>
+  <section class="section"><div class="container narrow panel camp-summary reveal"><p>{copy.note}</p></div></section>
+  <section class="cta-section"><div class="container cta-card"><h2>{copy.cta}</h2><a class="button" href={localePath(locale, 'contact')}>{copy.button}</a></div></section>
+</BaseLayout>

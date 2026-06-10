@@ -1,12 +1,12 @@
 # Project Architecture
 
-Last reviewed: 2026-06-08
+Last reviewed: 2026-06-10
 
 ## Current Architecture
 
 ### System Shape
 
-The project is a static, bilingual multi-page website for Sunbridge. English is the default language and visitors can switch to Chinese in the browser. It runs without a build step or package manager. The public content is intentionally limited to claims supported by the current Sunbridge brochure. A Supabase authentication and profile-management integration remains in the repository but is hidden from the public site and inactive.
+The repository has two deliberately separate frontend tracks. The root static HTML site is the deployed production baseline and rollback source. `apps/web` is the local Astro migration application; it generates the replacement bilingual site but is not yet the production Cloudflare build. The earlier Supabase browser-authentication prototype is archived and inactive, while its database migration remains available for future backend work.
 
 ### Frontend
 
@@ -16,41 +16,49 @@ The project is a static, bilingual multi-page website for Sunbridge. English is 
 - Shared styling:
   - `css/variables.css` defines design tokens and theme values.
   - `css/style.css` defines the current global layout, reusable components, page presentation, and responsive states.
-  - `css/components.css` and `css/pages.css` remain legacy stylesheets and are not loaded by the current public pages.
 - Shared browser behavior:
   - `js/main.js` owns the English/Chinese content dictionary, language preference, responsive navigation, and scroll reveals.
-  - `js/form.js` is retained legacy code and is not loaded by the current public pages.
-  - `js/supabase-client.js` creates the browser Supabase client from `js/supabase-config.js`.
-  - `js/auth.js` and `js/dashboard.js` implement authentication and account-management flows.
 - Static media lives in `images/`.
+- `apps/web` contains the Astro migration, shared layouts and bilingual page components, centralized site data, English root routes, Chinese `/zh/` routes, and Cloudflare-compatible headers and redirects.
+- The Astro public information architecture is Home, About, Programmes, Holiday Camp, and Contact. `ProgrammesPage.astro` presents five brochure-supported directions: STEM and AI discovery, sports and movement, creative arts, bilingual stories and literature, and social play and communication.
+- Previous Guitar, Badminton, and AI Skills detail routes are retired from the Astro build and redirect to the combined Programmes page.
 
 ### Data Flow
 
-All public pages and assets are served as static files. There are no public booking or contact forms; visitors use the brochure-provided phone, email, or website details. The selected language is stored in the visitor's browser under the `sunbridge-language` localStorage key.
+All public pages and assets are served as static files. There are no public booking or contact forms; visitors use the confirmed phone number and email address. The selected language is represented by the English root routes or Chinese `/zh/` routes.
 
 If reactivated and configured later, Supabase Auth owns sessions and credentials. The `public.profiles` PostgreSQL table stores non-secret profile fields and application roles. Row Level Security limits ordinary users to their own profile; role changes go through the administrator-only `set_user_role` database function.
 
 ### Operational Boundaries
 
-- Supabase remains the selected managed backend for a future login launch; the repository contains the implementation and migration but no cloud project credentials.
+- The public site is deployed through GitHub and Cloudflare Pages. The operational standard is documented in `docs/UPDATE_SOP.md`.
+- `main` is the production branch; non-production branches are used for review and Preview deployments.
+- Supabase remains the selected managed backend for a future login launch; the repository contains the migration and an archived prototype but no cloud project credentials.
 - No login link, account UI, public form, production persistence, or administrator notification is active.
-- Deployment configuration is not currently stored in the repository.
-- Quality checks are manual; JavaScript can be syntax-checked with `node --check`, and architecture documentation has a repository validation script.
+- The production Cloudflare project still serves the root static site. Switching its build root to `apps/web` is a separate release task.
+- The Astro migration is checked with `npm run check` and built with `npm run build` from `apps/web`.
+- `docs/RELEASE_CHECKLIST.md` defines release verification, and `docs/CONTENT_RULES.md` defines public content boundaries.
 
 ### Brand And Location
 
 - The sole public brand name is `Sunbridge`, with no Chinese name or `Academy` suffix.
 - The current brochure is the source of truth for public programme descriptions and contact claims.
-- Public pages state only that classes and camps take place at local partner schools, with exact venues supplied at booking confirmation.
-- The public contact email is `info@sunbridgeacademy.co.uk`; the brochure phone number remains a placeholder pending a real number.
+- Public pages do not claim a fixed venue; current locations are confirmed when a visitor enquires.
+- The public contact details are `07476 197319` and `info@sunbridgeacademy.uk`. The unresolved website URL is not exposed by the Astro site.
+- Holiday Camp is presented only as an available service. Dates, schedules, activities, ages, care hours, fees, venues, and availability are not published as fixed facts.
 - Historical Chinese branding, unsupported locations, and unverified programme claims must not be reintroduced.
 
 ## Planned Architecture
 
-The proposed direction is a dynamic academy management platform backed by FastAPI and PostgreSQL. The detailed proposal, data model, authentication flow, course-credit transactions, media storage, and staged rollout are documented in `backend_architecture_plan.md`.
+The frontend portion of the target architecture is implemented locally in `apps/web`. It remains preview-only until visual parity, URL compatibility, content review, and Cloudflare Preview verification are complete. The `/api/v1` boundary and dynamic backend remain future work. Details are in `docs/TARGET_ARCHITECTURE.md`.
 
-Planned components are not implemented and must not be represented as current behavior:
+The archived `docs/archive/LEGACY_BACKEND_ARCHITECTURE.md` remains supporting exploration for complex academy-management features. Its custom authentication and infrastructure assumptions are not authoritative where they conflict with the selected Supabase architecture or `docs/TARGET_ARCHITECTURE.md`.
 
+Remaining planned components must not be represented as current behavior:
+
+- Production Cloudflare Pages build output from `apps/web/dist`.
+- Versioned `/api/v1` frontend boundary.
+- Cloudflare Functions limited to lightweight `/api/*` routes.
 - FastAPI application and versioned API endpoints.
 - PostgreSQL persistence for users, students, courses, credit logs, and growth reports.
 - Secure authentication and role-based authorization.
@@ -68,7 +76,7 @@ The selected phase-one platform is Supabase:
 - Managed PostgreSQL stores profiles and future relational academy data.
 - RLS and restricted database functions enforce authorization.
 - `supabase/migrations/001_auth_system.sql` is the source-controlled authentication schema.
-- `SUPABASE_SETUP.md` documents deployment and first-admin bootstrapping.
+- `docs/archive/SUPABASE_AUTH_PROTOTYPE_SETUP.md` preserves prototype deployment notes.
 
 Cloud project creation, credentials, SMTP/OAuth configuration, and production backup settings remain operational deployment work rather than implemented repository state.
 
@@ -77,13 +85,16 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | Date | Decision | Status | Rationale |
 | --- | --- | --- | --- |
 | 2026-06-06 | Keep the existing site dependency-free and static until backend implementation begins. | Active | This reflects the deployed code and avoids implying unavailable server capabilities. |
-| 2026-06-06 | Use `ARCHITECTURE.md` as the concise source of truth and retain `backend_architecture_plan.md` as detailed future design. | Active | Separates implemented reality from longer-term planning. |
+| 2026-06-06 | Use `ARCHITECTURE.md` as the concise source of truth and retain `backend_architecture_plan.md` as detailed future design. | Superseded by 2026-06-08 target architecture decision | The early backend draft is now archived; `docs/TARGET_ARCHITECTURE.md` is the proposed target design. |
 | 2026-06-06 | Track unfinished technical work with stable `KC-###` IDs in `TODO.md`. | Active | Makes follow-up work discoverable across sessions and contributors. |
 | 2026-06-06 | Use Supabase Auth and managed PostgreSQL for the phase-one login and profile system. | Active | It supplies integrated identity, relational storage, and RLS while preserving PostgreSQL portability. |
 | 2026-06-06 | Keep privileged role changes in the database through an administrator-only function. | Active | Browser UI checks alone are not an authorization boundary, and no service key may be exposed client-side. |
 | 2026-06-06 | Align the default site style with corporate flyers, defaulting to a clean light theme with orange branding accents. | Active | Matches the physical flyer materials and unifies the brand color identity (orange/charcoal). |
 | 2026-06-07 | Use `Sunbridge` as the sole public name, with no Chinese name or `Academy` suffix, and Barnet, London as the public location. | Superseded by 2026-06-08 brochure-source decision | The current brochure does not name Barnet and says venues are local partner schools confirmed at booking. |
 | 2026-06-08 | Treat the current Sunbridge brochure as the source of truth for public website claims, default to English with a Chinese switch, and hide login until it is explicitly relaunched. | Active | Keeps the website concise, verifiable, and aligned with current customer-facing material while preserving dormant authentication work. |
+| 2026-06-08 | Use feature branches, pull requests, Cloudflare Preview deployments, production verification, and Git-synchronized rollback as the standard release workflow. | Active | The website is live, so every update needs a reviewable path, a pre-production check, and a recovery procedure that keeps Git and production aligned. |
+| 2026-06-08 | Adopt a content-driven Astro static site as the target frontend architecture, with bilingual URL routes and a backend-neutral `/api/v1` boundary. | In progress | The local static-generation frontend is implemented; production migration remains gated by preview and release verification. |
+| 2026-06-10 | Organize public activities as five broad programme directions and keep Holiday Camp details enquiry-only. | Active | The current brochure supports a balanced learning framework but does not substantiate the previous standalone lesson parameters or fixed camp schedule. |
 
 ## Architecture Change Log
 
@@ -96,3 +107,9 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | 2026-06-06 | Vectorized the corporate logo (removing bottom tagline), aligned the global stylesheets to use the warm orange theme, set light mode as default, and integrated SVG logos. | KC-011 |
 | 2026-06-07 | Finalized the sole brand name as Sunbridge and migrated all public Beijing campus addresses to Barnet, London. | KC-012 |
 | 2026-06-08 | Rebuilt the public site around the current brochure, added English/Chinese switching with English default, added Guitar and Holiday Camp pages, and hid all login surfaces. | KC-013 |
+| 2026-06-08 | Adopted the production update SOP, release checklist, content rules, and architecture-keeper enforcement for future website changes. | KC-015 |
+| 2026-06-08 | Stabilized the shared mobile navigation panel and increased the responsive header logo size. | KC-017 |
+| 2026-06-08 | Defined the target content, frontend, API, backend, and Cloudflare architecture with a phased migration path. | KC-020 |
+| 2026-06-08 | Added the local Astro migration app, separated active code from archived prototypes, and reduced root documentation to project entry points. | KC-021 |
+| 2026-06-10 | Replaced standalone Guitar, Badminton, and AI Skills pages with one bilingual Programmes page, reduced Holiday Camp to a service statement, removed unconfirmed contact claims, and added legacy redirects. | KC-022 |
+| 2026-06-10 | Replaced the contact placeholders with the confirmed public phone number and email across the Astro Contact page and footer. | KC-014 |

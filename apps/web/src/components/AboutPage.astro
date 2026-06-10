@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { localePath, type Locale } from '../data/site';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const isZh = locale === 'zh';
+const copy = isZh ? {
+  title: '关于我们 | Sunbridge',
+  description: '了解 Sunbridge 如何通过实践探索、运动、创意和双语沟通支持儿童平衡成长。',
+  eyebrow: '关于 Sunbridge',
+  heading: '在安全、积极的环境中探索与成长',
+  intro: 'Sunbridge 为儿童提供融合创意、运动、STEM 与双语沟通的成长体验，鼓励孩子发现兴趣、参与合作并建立自信。',
+  mission: '我们的使命',
+  missionTitle: '帮助孩子主动探索，自信参与',
+  missionBody: '我们希望儿童在具有支持性的环境中接触不同想法和活动，通过实践学习、表达自己并与他人建立积极连接。',
+  philosophy: '我们的理念',
+  philosophyTitle: '学习、运动、创造、休息与社交保持平衡',
+  cards: [
+    ['实践中学习', '通过动手挑战、创作、游戏与讨论，把新想法转化为真实体验。'],
+    ['适龄探索', '活动根据儿童的发展阶段和当前项目灵活安排，不以统一结果衡量每个孩子。'],
+    ['积极引导', '清晰、友好和支持性的引导，帮助孩子愿意参与并逐步建立信心。'],
+    ['双语沟通', '通过中英文故事、阅读、倾听和分享，支持理解、沟通与文化意识。'],
+    ['平衡发展', '创意、运动、思考、表达和社交共同支持儿童的全面成长。']
+  ],
+  family: '面向家庭',
+  familyTitle: '清晰、方便并值得安心的沟通',
+  familyBody: '我们在咨询时说明当前项目、适合年龄、时间、费用和地点，让家长根据孩子的需要选择合适安排。',
+  cta: '联系 Sunbridge'
+} : {
+  title: 'About | Sunbridge',
+  description: 'Learn how Sunbridge supports balanced childhood development through practical exploration, movement, creativity and bilingual communication.',
+  eyebrow: 'About Sunbridge',
+  heading: 'A safe, positive place to explore and grow',
+  intro: 'Sunbridge brings together creativity, movement, STEM and bilingual communication, encouraging children to discover interests, collaborate and build confidence.',
+  mission: 'Our Mission',
+  missionTitle: 'Helping children explore and take part with confidence',
+  missionBody: 'We want children to encounter different ideas and activities in a supportive environment, learning through practice, expressing themselves and building positive connections.',
+  philosophy: 'Our Philosophy',
+  philosophyTitle: 'Balance learning, movement, creativity, rest and social time',
+  cards: [
+    ['Learn by Doing', 'Hands-on challenges, making, play and discussion turn new ideas into real experiences.'],
+    ['Age-Appropriate Exploration', 'Activities adapt to children’s development and the current programme rather than expecting one result from every child.'],
+    ['Positive Guidance', 'Clear, friendly and supportive guidance helps children participate and develop confidence over time.'],
+    ['Bilingual Communication', 'Chinese and English stories, reading, listening and sharing support understanding, communication and cultural awareness.'],
+    ['Balanced Development', 'Creativity, movement, thinking, expression and social activity work together to support the whole child.']
+  ],
+  family: 'For Families',
+  familyTitle: 'Clear, convenient and reassuring communication',
+  familyBody: 'When you enquire, we confirm current programmes, suitable ages, times, fees and locations so families can choose an appropriate arrangement.',
+  cta: 'Contact Sunbridge'
+};
+---
+
+<BaseLayout locale={locale} title={copy.title} description={copy.description}>
+  <section class="page-hero"><div class="container narrow reveal"><p class="eyebrow">{copy.eyebrow}</p><h1>{copy.heading}</h1><p>{copy.intro}</p></div></section>
+  <section class="section"><div class="container split"><div><p class="eyebrow">{copy.mission}</p><h2>{copy.missionTitle}</h2></div><div class="panel"><p>{copy.missionBody}</p></div></div></section>
+  <section class="section section-soft"><div class="container"><div class="section-heading"><p class="eyebrow">{copy.philosophy}</p><h2>{copy.philosophyTitle}</h2></div><div class="grid programme-grid">{copy.cards.map(([title, body]) => <article class="feature-card reveal"><h3>{title}</h3><p>{body}</p></article>)}</div></div></section>
+  <section class="section"><div class="container split"><div><p class="eyebrow">{copy.family}</p><h2>{copy.familyTitle}</h2></div><div class="panel"><p>{copy.familyBody}</p></div></div></section>
+  <section class="cta"><div class="container"><h2>{copy.heading}</h2><a class="button" href={localePath(locale, 'contact')}>{copy.cta}</a></div></section>
+</BaseLayout>

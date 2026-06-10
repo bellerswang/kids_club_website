@@ -11,7 +11,11 @@ Treat documentation maintenance as part of the implementation, not as optional f
 
 - `ARCHITECTURE.md`: source of truth for the current implemented system and explicitly separated future architecture.
 - `TODO.md`: source of truth for unfinished engineering work, refactors, risks, and recently completed tasks.
-- `backend_architecture_plan.md`: detailed future backend proposal. Preserve it as supporting design material; do not describe it as implemented.
+- `docs/archive/LEGACY_BACKEND_ARCHITECTURE.md`: archived backend exploration. Preserve it for history; do not describe it as implemented or authoritative.
+- `docs/TARGET_ARCHITECTURE.md`: proposed content, frontend, API, backend, and Cloudflare target architecture.
+- `docs/UPDATE_SOP.md`: required workflow for branches, previews, production releases, and rollbacks.
+- `docs/RELEASE_CHECKLIST.md`: release verification checklist.
+- `docs/CONTENT_RULES.md`: public content, bilingual, brand, privacy, and child-image rules.
 
 Resolve these paths from the repository root.
 
@@ -19,12 +23,13 @@ Resolve these paths from the repository root.
 
 1. Read `ARCHITECTURE.md` and `TODO.md` before editing code.
 2. Inspect the relevant implementation and Git status.
-3. Identify whether the requested work changes any of:
+3. Read `docs/CONTENT_RULES.md` for public content changes and `docs/UPDATE_SOP.md` for work that may be released.
+4. Identify whether the requested work changes any of:
    - components, modules, files, or ownership boundaries;
    - runtime dependencies or external services;
    - data flow, storage, APIs, security, deployment, or build/test workflow;
    - an existing TODO item's status, scope, priority, or acceptance criteria.
-4. Select existing TODO IDs that the task addresses. Create new IDs only for newly discovered unfinished work.
+5. Select existing TODO IDs that the task addresses. Create new IDs only for newly discovered unfinished work.
 
 ## During Implementation
 
@@ -52,6 +57,7 @@ python .agents/skills/project-architecture-keeper/scripts/validate_project_docs.
 ```
 
 6. Inspect `git diff` and confirm documentation matches the actual code.
+7. For release work, complete the checks relevant to the change in `docs/RELEASE_CHECKLIST.md`.
 
 Documentation-only wording changes do not require an architecture log entry unless they change a decision or system description.
 

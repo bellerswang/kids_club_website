@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { localePath, type Locale } from '../data/site';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const isZh = locale === 'zh';
+const copy = isZh ? {
+  title: 'Sunbridge｜创意、运动、STEM 与双语成长体验',
+  description: 'Sunbridge 为儿童提供融合创意、运动、STEM、适龄 AI 与双语沟通的成长体验。',
+  heroEyebrow: '创意 · 运动 · STEM · 双语学习',
+  heroTitle: '探索、连接、自信成长',
+  heroBody: '融合创意、运动与双语学习的儿童成长体验，让孩子通过实践、合作与表达发现兴趣、发展能力。',
+  explore: '探索项目方向',
+  contact: '联系我们',
+  aboutEyebrow: '关于 Sunbridge',
+  aboutTitle: '让学习积极、平衡并富有意义',
+  aboutBody: '我们通过适龄探索、动手实践、运动、创作和双语沟通，为儿童提供安全、积极且具有支持性的成长体验。',
+  programmesEyebrow: '项目方向',
+  programmesTitle: '围绕儿童全面成长设计',
+  programmesBody: '具体活动会根据当前项目和年龄安排调整。请联系我们确认适合的内容、时间和地点。',
+  learnMore: '了解项目方向',
+  programmes: [
+    ['STEM 与 AI 探索', '通过动手挑战、逻辑游戏、问题解决和适龄 AI 探索，激发好奇心与创造性思维。', 'STEM'],
+    ['运动与协调', '通过运动、团队游戏和协调挑战，支持活力、自信与合作。', 'MOVE'],
+    ['创意艺术', '通过艺术、手工、音乐、绘画和故事活动，鼓励想象与自我表达。', 'CREATE'],
+    ['双语故事与阅读', '通过中英文故事、阅读、讨论和分享，练习倾听、理解与表达。', 'READ'],
+    ['社交游戏与沟通', '通过受监督的自由活动、桌游和团队任务，帮助孩子连接同伴、练习沟通。', 'CONNECT']
+  ],
+  approachEyebrow: '我们的方式',
+  approachTitle: '在实践与支持中学习',
+  approachBody: '探索、创造、运动、沟通和反思共同构成平衡的学习体验。我们重视积极引导，让孩子以适合自己的节奏参与。',
+  campEyebrow: 'Holiday Camp',
+  campTitle: '学校假期也提供 Holiday Camp',
+  campBody: 'Sunbridge 在部分学校假期提供 Holiday Camp。当前日期、地点和名额请联系我们确认。',
+  campButton: '咨询 Holiday Camp',
+  ctaTitle: '寻找适合孩子的当前项目',
+  ctaBody: '联系我们了解项目内容、适合年龄、时间、费用和活动地点。'
+} : {
+  title: 'Sunbridge | Creative, Active and Bilingual Learning',
+  description: 'Creative, active and bilingual learning experiences for children, including STEM, age-appropriate AI, movement and communication.',
+  heroEyebrow: 'Creativity · Movement · STEM · Bilingual Learning',
+  heroTitle: 'Explore, connect and grow',
+  heroBody: 'Creative, active and bilingual learning experiences where children discover interests and develop skills through practical activity, collaboration and expression.',
+  explore: 'Explore programmes',
+  contact: 'Contact us',
+  aboutEyebrow: 'About Sunbridge',
+  aboutTitle: 'Active, balanced and meaningful learning',
+  aboutBody: 'We bring together age-appropriate exploration, hands-on activity, movement, creativity and bilingual communication in a safe, positive and supportive environment.',
+  programmesEyebrow: 'Programme Directions',
+  programmesTitle: 'Designed around the whole child',
+  programmesBody: 'Activities vary with the current programme and age group. Contact us to confirm suitable content, times and locations.',
+  learnMore: 'Explore all programmes',
+  programmes: [
+    ['STEM & AI Discovery', 'Hands-on challenges, logic games, problem solving and age-appropriate AI exploration encourage curiosity and creative thinking.', 'STEM'],
+    ['Sports & Movement', 'Movement, team games and coordination challenges support energy, confidence and collaboration.', 'MOVE'],
+    ['Creative Arts', 'Art, craft, music, drawing and storytelling encourage imagination and self-expression.', 'CREATE'],
+    ['Bilingual Stories & Literature', 'Chinese and English stories, reading, discussion and sharing support listening, understanding and expression.', 'READ'],
+    ['Social Play & Communication', 'Supervised play, board games and group tasks help children connect, communicate and take part with confidence.', 'CONNECT']
+  ],
+  approachEyebrow: 'Our Approach',
+  approachTitle: 'Learning through practice and positive support',
+  approachBody: 'Exploration, creativity, movement, communication and reflection create a balanced experience. Positive guidance helps children participate at an appropriate pace.',
+  campEyebrow: 'Holiday Camp',
+  campTitle: 'Holiday Camps are also available',
+  campBody: 'Sunbridge provides Holiday Camps during selected school breaks. Contact us for current dates, locations and availability.',
+  campButton: 'Ask about Holiday Camp',
+  ctaTitle: 'Find a suitable current programme',
+  ctaBody: 'Contact us to ask about programme content, suitable ages, times, fees and locations.'
+};
+---
+
+<BaseLayout locale={locale} title={copy.title} description={copy.description}>
+  <section class="hero">
+    <div class="container hero-content">
+      <img src="/images/logo.svg" alt="Sunbridge" class="hero-logo" />
+      <span class="eyebrow">{copy.heroEyebrow}</span>
+      <h1>{copy.heroTitle}</h1>
+      <p>{copy.heroBody}</p>
+      <div class="actions">
+        <a class="button" href={localePath(locale, 'programmes')}>{copy.explore}</a>
+        <a class="btn btn-outline" href={localePath(locale, 'contact')}>{copy.contact}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="visual-panel reveal" aria-hidden="true">
+        <div class="visual-panel-content"><strong>Sunbridge</strong><span>{copy.heroTitle}</span></div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">{copy.aboutEyebrow}</span>
+        <h2>{copy.aboutTitle}</h2>
+        <p>{copy.aboutBody}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="programmes">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">{copy.programmesEyebrow}</span>
+        <h2>{copy.programmesTitle}</h2>
+        <p>{copy.programmesBody}</p>
+      </div>
+      <div class="grid programme-grid">
+        {copy.programmes.map(([title, body, icon]) => (
+          <article class="card reveal">
+            <div class="card-icon card-icon-text">{icon}</div>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </article>
+        ))}
+      </div>
+      <div class="section-action">
+        <a class="button" href={localePath(locale, 'programmes')}>{copy.learnMore}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">{copy.approachEyebrow}</span>
+        <h2>{copy.approachTitle}</h2>
+      </div>
+      <div class="panel reveal"><p>{copy.approachBody}</p></div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container camp-callout reveal">
+      <div>
+        <span class="eyebrow">{copy.campEyebrow}</span>
+        <h2>{copy.campTitle}</h2>
+        <p>{copy.campBody}</p>
+      </div>
+      <a class="button" href={localePath(locale, 'holiday-camp')}>{copy.campButton}</a>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>{copy.ctaTitle}</h2>
+      <p>{copy.ctaBody}</p>
+      <a class="button" href={localePath(locale, 'contact')}>{copy.contact}</a>
+    </div>
+  </section>
+</BaseLayout>

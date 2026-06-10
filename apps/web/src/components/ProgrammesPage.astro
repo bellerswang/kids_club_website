@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { localePath, type Locale } from '../data/site';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const isZh = locale === 'zh';
+const copy = isZh ? {
+  title: '项目方向 | Sunbridge',
+  description: '探索 Sunbridge 的 STEM 与 AI、运动、创意艺术、双语故事阅读以及社交沟通项目方向。',
+  eyebrow: '项目方向',
+  heading: '通过探索、创造、运动与沟通学习',
+  intro: '我们的项目围绕五个相互连接的方向设计。具体活动会根据当前项目、儿童年龄和实际安排灵活调整。',
+  activity: '可能接触的活动',
+  supports: '支持的发展方向',
+  programmes: [
+    { id: 'stem-ai', title: 'STEM 与 AI 探索', summary: '通过实践挑战和适龄数字探索，鼓励好奇、逻辑与创造性思维。', activities: ['动手挑战与简单实验', '逻辑游戏和问题解决', '适龄 AI 探索与创意想法'], skills: '好奇心、逻辑思维、想象力与合作' },
+    { id: 'sports-movement', title: '运动与协调', summary: '通过积极、有趣的运动体验，帮助儿童保持活力并练习合作。', activities: ['运动与协调挑战', '羽毛球基础', '团队游戏与轻运动'], skills: '协调能力、运动信心、团队合作与积极参与' },
+    { id: 'creative-arts', title: '创意艺术与制作', summary: '让儿童通过多种材料、声音和故事表达想法。', activities: ['艺术、绘画与手工', '音乐、故事与创意制作', '个人创作和小组分享'], skills: '想象力、自我表达、专注与创作信心' },
+    { id: 'bilingual-stories', title: '双语故事与阅读', summary: '通过中英文故事、阅读和讨论，创造自然的倾听与表达机会。', activities: ['中英文故事与图书阅读', '动画、故事片段和引导讨论', '分享、简单展示与创意写作'], skills: '倾听、阅读理解、沟通、表达与文化意识' },
+    { id: 'social-play', title: '社交游戏与沟通', summary: '在受监督的自由活动和团队任务中，让儿童休息、连接并参与。', activities: ['阅读、桌游、绘画与积木', '受监督的自由活动', '团队任务、分享与反思'], skills: '沟通、友谊、合作、自我调节与参与信心' }
+  ],
+  noteTitle: '每次活动都会完全相同吗？',
+  noteBody: '不会。活动会根据当前项目、主题、年龄和实际安排变化。请联系我们确认当前提供的内容。',
+  cta: '咨询当前项目'
+} : {
+  title: 'Programmes | Sunbridge',
+  description: 'Explore Sunbridge programme directions across STEM and AI, movement, creative arts, bilingual stories and social communication.',
+  eyebrow: 'Programme Directions',
+  heading: 'Learn through exploration, creativity, movement and communication',
+  intro: 'Our programmes connect five complementary directions. Specific activities adapt to the current programme, children’s ages and practical arrangements.',
+  activity: 'Activities may include',
+  supports: 'Supports',
+  programmes: [
+    { id: 'stem-ai', title: 'STEM & AI Discovery', summary: 'Practical challenges and age-appropriate digital exploration encourage curiosity, logic and creative thinking.', activities: ['Hands-on challenges and simple experiments', 'Logic games and problem solving', 'Age-appropriate AI exploration and creative ideas'], skills: 'Curiosity, logical thinking, imagination and collaboration' },
+    { id: 'sports-movement', title: 'Sports & Movement', summary: 'Positive and enjoyable movement experiences help children stay active and practise working with others.', activities: ['Movement and coordination challenges', 'Badminton basics', 'Team games and light physical activity'], skills: 'Coordination, movement confidence, teamwork and positive participation' },
+    { id: 'creative-arts', title: 'Creative Arts & Making', summary: 'Children express ideas through varied materials, sound, stories and creative projects.', activities: ['Art, drawing and craft', 'Music, storytelling and creative making', 'Individual projects and group sharing'], skills: 'Imagination, self-expression, concentration and creative confidence' },
+    { id: 'bilingual-stories', title: 'Bilingual Stories & Literature', summary: 'Chinese and English stories, reading and discussion create natural opportunities to listen and communicate.', activities: ['Chinese and English stories and books', 'Animation, story clips and guided discussion', 'Sharing, simple presentations and creative writing'], skills: 'Listening, reading comprehension, communication, expression and cultural awareness' },
+    { id: 'social-play', title: 'Social Play & Communication', summary: 'Supervised free activity and group tasks give children time to recharge, connect and take part.', activities: ['Reading, board games, drawing and building', 'Supervised free activity', 'Team tasks, sharing and reflection'], skills: 'Communication, friendship, cooperation, self-regulation and participation' }
+  ],
+  noteTitle: 'Will every session include the same activities?',
+  noteBody: 'No. Activities vary with the current programme, theme, age group and practical arrangements. Contact us to confirm what is currently available.',
+  cta: 'Ask about current programmes'
+};
+---
+
+<BaseLayout locale={locale} title={copy.title} description={copy.description}>
+  <section class="page-hero"><div class="container narrow reveal"><p class="eyebrow">{copy.eyebrow}</p><h1>{copy.heading}</h1><p>{copy.intro}</p></div></section>
+  <section class="section">
+    <div class="container programme-list">
+      {copy.programmes.map((programme, index) => (
+        <article class="programme-detail reveal" id={programme.id}>
+          <div class="programme-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
+          <div class="programme-copy">
+            <h2>{programme.title}</h2>
+            <p class="lead">{programme.summary}</p>
+            <div class="programme-columns">
+              <div><h3>{copy.activity}</h3><ul class="check-list">{programme.activities.map((item) => <li>{item}</li>)}</ul></div>
+              <div class="programme-support"><h3>{copy.supports}</h3><p>{programme.skills}</p></div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="section section-soft"><div class="container narrow panel reveal"><h2>{copy.noteTitle}</h2><p>{copy.noteBody}</p></div></section>
+  <section class="cta-section"><div class="container cta-card"><h2>{copy.cta}</h2><a class="button" href={localePath(locale, 'contact')}>{copy.cta}</a></div></section>
+</BaseLayout>

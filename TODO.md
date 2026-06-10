@@ -1,6 +1,6 @@
 # Project TODO
 
-Last reviewed: 2026-06-08
+Last reviewed: 2026-06-10
 
 This file is the source of truth for unfinished engineering work. Update it during every implementation task.
 
@@ -11,7 +11,7 @@ This file is the source of truth for unfinished engineering work. Update it duri
 - Status: Ready
 - Priority: P1
 - Area: Backend / Infrastructure
-- Next action: Confirm the phase-one scope in `backend_architecture_plan.md`, scaffold the selected backend, and document local startup and configuration.
+- Next action: Confirm the phase-one scope in `docs/TARGET_ARCHITECTURE.md`, scaffold the selected backend behind `/api/v1`, and document local startup and configuration.
 - Acceptance criteria: A health endpoint runs locally; configuration comes from environment variables; dependencies are pinned; backend checks run with one documented command.
 
 ### KC-006: Add repeatable static-site quality checks
@@ -49,16 +49,61 @@ This file is the source of truth for unfinished engineering work. Update it duri
 - Next action: Configure custom SMTP, CAPTCHA or equivalent abuse protection, rate-limit monitoring, backup retention, and a restore drill.
 - Acceptance criteria: Production email uses the academy domain; automated sign-up abuse is limited; alerting exists for unusual authentication activity; a documented restore test succeeds.
 
-### KC-014: Replace brochure contact placeholders
+### KC-016: Enforce the production branch workflow
 
-- Status: Blocked
-- Priority: P0
-- Area: Content / Launch
-- Next action: Replace `07XXX XXXXXX` with the confirmed public phone number and verify that the brochure email and website domain are live.
-- Acceptance criteria: Every public page shows a working phone number; phone, email, and website links are tested; no placeholder contact data remains.
-- Blocked by: A confirmed public phone number has not been provided.
+- Status: Ready
+- Priority: P1
+- Area: GitHub / Deployment
+- Next action: Protect `main`, require pull requests before merging, disable force pushes and branch deletion, confirm Cloudflare Production branch is `main`, and confirm Preview branches are enabled.
+- Acceptance criteria: A direct push to `main` is rejected; a feature branch produces a Cloudflare Preview; only a reviewed PR can merge; merging triggers a successful production deployment.
+
+### KC-018: Migrate the public site to the content-driven target architecture
+
+- Status: In progress
+- Priority: P1
+- Area: Frontend / Content / Cloudflare
+- Next action: Review the generated pages for visual and content parity, test old URL redirects, then deploy `apps/web` only as a Cloudflare Preview.
+- Acceptance criteria: The Preview builds from `apps/web` into `dist`; Home, About and one programme render in English and under `/zh/`; shared site data updates all generated pages; existing production remains unchanged; old URL compatibility is documented.
+- Notes: Follow the phased migration in `docs/TARGET_ARCHITECTURE.md`. Do not switch the production build root until all current public pages, redirects and release checks pass.
 
 ## Recently Completed
+
+### KC-014: Replace brochure contact placeholders
+
+- Completed: 2026-06-10
+- Result: Set the confirmed public phone number to `07476 197319` and email to `info@sunbridgeacademy.uk` in shared Astro site data, the Contact page and footer; retained no public website link because a production domain has not been confirmed.
+- Verification: Phone uses the international `tel:+447476197319` target, email uses `mailto:info@sunbridgeacademy.uk`, and no old email or phone placeholder remains in the Astro source.
+
+### KC-022: Restructure public content around the new Holiday Camp brochure
+
+- Completed: 2026-06-10
+- Result: Rebuilt the Astro site around five bilingual programme directions; replaced standalone Guitar, Badminton, and AI Skills pages with a combined Programmes page; reduced Holiday Camp to an availability statement and enquiry CTA; removed unconfirmed phone, website, venue, age, group-size, schedule, and activity claims; and redirected old programme URLs.
+- Verification: Astro check and build passed; English and Chinese Home, Programmes, Holiday Camp, and Contact routes returned 200 at desktop and 390px; no horizontal overflow or browser console errors were detected.
+
+### KC-021: Organize the local repository for the target architecture
+
+- Completed: 2026-06-08
+- Result: Added the isolated Astro migration app, consolidated active documentation, archived stale frontend and authentication prototypes without deleting history, and kept the deployed root static site intact as the production rollback baseline.
+
+### KC-019: Archive the stale backend architecture draft
+
+- Completed: 2026-06-08
+- Result: Moved the early backend design into `docs/archive`, marked its custom authentication and infrastructure assumptions as non-authoritative, and made the target architecture document the future-design source of truth.
+
+### KC-020: Design the Cloudflare-compatible target architecture
+
+- Completed: 2026-06-08
+- Result: Defined a content-driven Astro frontend, schema-validated bilingual content, shared components, Cloudflare Pages build structure, an `/api/v1` boundary, staged Supabase/Functions/FastAPI adoption, and a production-safe migration plan.
+
+### KC-017: Stabilize the mobile navigation and header logo
+
+- Completed: 2026-06-08
+- Result: Made the mobile navigation an opaque, isolated full-height panel with reliable visibility states and stronger separation from page content; enlarged the header logo and aligned its responsive sizing with the navigation bar.
+
+### KC-015: Adopt the website release standard
+
+- Completed: 2026-06-08
+- Result: Added the production update SOP, release checklist and content rules; corrected the AI Skills page path; required scoped staging instead of `git add .`; documented Preview privacy and post-rollback Git reconciliation; and integrated the standards into the project architecture-keeper skill.
 
 ### KC-013: Rebuild public content from the Sunbridge brochure
 

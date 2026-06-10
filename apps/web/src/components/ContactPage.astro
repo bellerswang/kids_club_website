@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, type Locale } from '../data/site';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const isZh = locale === 'zh';
+const copy = isZh ? {
+  title: '联系我们 | Sunbridge',
+  description: '联系 Sunbridge，咨询当前儿童项目、适合年龄、时间、费用、地点和 Holiday Camp。',
+  eyebrow: '联系 Sunbridge',
+  heading: '咨询当前项目与 Holiday Camp',
+  intro: '请通过电话或邮箱联系我们。我们会根据当前安排说明适合年龄、项目内容、时间、费用、地点和可用名额。',
+  phone: '电话',
+  email: '邮箱',
+  ask: '咨询时可以包括',
+  topics: ['孩子的年龄和兴趣', '希望了解的项目方向', '方便参加的日期或时间', '是否咨询 Holiday Camp'],
+  details: '活动信息',
+  detailsTitle: '具体安排以咨询确认为准',
+  detailsBody: '项目内容、适合年龄、时间、费用和活动地点可能因当前安排而不同。确认前，网站不会公布未经核实的固定信息。'
+} : {
+  title: 'Contact | Sunbridge',
+  description: 'Contact Sunbridge about current children’s programmes, suitable ages, times, fees, locations and Holiday Camp.',
+  eyebrow: 'Contact Sunbridge',
+  heading: 'Ask about current programmes and Holiday Camp',
+  intro: 'Call or email us and we will explain suitable ages, programme content, times, fees, locations and current availability.',
+  phone: 'Phone',
+  email: 'Email',
+  ask: 'What to include',
+  topics: ['Your child’s age and interests', 'The programme direction you want to explore', 'Preferred dates or times', 'Whether you are asking about Holiday Camp'],
+  details: 'Programme Information',
+  detailsTitle: 'Details are confirmed when you enquire',
+  detailsBody: 'Programme content, suitable ages, times, fees and locations may vary with the current arrangement. We do not publish unconfirmed fixed details.'
+};
+---
+
+<BaseLayout locale={locale} title={copy.title} description={copy.description}>
+  <section class="page-hero"><div class="container narrow reveal"><p class="eyebrow">{copy.eyebrow}</p><h1>{copy.heading}</h1><p>{copy.intro}</p></div></section>
+  <section class="section">
+    <div class="container contact-grid">
+      <a class="contact-card reveal" href={`tel:${site.phoneHref}`}><span>{copy.phone}</span><strong>{site.phoneDisplay}</strong></a>
+      <a class="contact-card reveal" href={`mailto:${site.email}`}><span>{copy.email}</span><strong>{site.email}</strong></a>
+      <div class="panel reveal"><h2>{copy.ask}</h2><ul class="check-list">{copy.topics.map((topic) => <li>{topic}</li>)}</ul></div>
+    </div>
+  </section>
+  <section class="section section-soft"><div class="container split"><div><p class="eyebrow">{copy.details}</p><h2>{copy.detailsTitle}</h2></div><div class="panel"><p>{copy.detailsBody}</p></div></div></section>
+</BaseLayout>

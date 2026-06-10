@@ -68,6 +68,12 @@ This file is the source of truth for unfinished engineering work. Update it duri
 
 ## Recently Completed
 
+### KC-023: Configure Cloudflare Workers deployment for the Astro site
+
+- Completed: 2026-06-10
+- Result: Added a root build script that installs and builds `apps/web`, plus `wrangler.jsonc` mapping Workers static assets to `apps/web/dist`.
+- Verification: Root dependency installation and build passed; Astro generated 10 pages; Wrangler dry-run read 30 files from `apps/web/dist`. The next Cloudflare production deployment remains the final external check.
+
 ### KC-014: Replace brochure contact placeholders
 
 - Completed: 2026-06-10

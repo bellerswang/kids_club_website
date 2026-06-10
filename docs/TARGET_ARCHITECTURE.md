@@ -207,12 +207,13 @@ Functions 只匹配 `/api/*`。静态页面不应经过 Function，以保持静�
 
 ## 7. Cloudflare 设计
 
-当前继续使用 Cloudflare Pages：
+当前 GitHub 集成项目使用 Cloudflare Workers Static Assets：
 
 ```text
-Root directory: apps/web
+Root directory: repository root
 Build command: npm run build
-Build output: dist
+Deploy command: npx wrangler deploy
+Static assets: apps/web/dist
 Production branch: main
 ```
 
@@ -220,6 +221,7 @@ Production branch: main
 
 - Preview deployments 开启。
 - Build watch paths 只包含 `apps/web/*`、`packages/*` 和相关配置。
+- `wrangler.jsonc` 定义 Workers 项目名称和静态资源目录。
 - `public/_headers` 管理缓存和安全头。
 - `public/_redirects` 管理旧 URL 和 canonical 域名跳转。
 - Preview 和 Production 使用不同环境变量。

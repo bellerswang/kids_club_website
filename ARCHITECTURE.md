@@ -37,6 +37,7 @@ If reactivated and configured later, Supabase Auth owns sessions and credentials
 - No login link, account UI, public form, production persistence, or administrator notification is active.
 - The production Cloudflare project still serves the root static site. Switching its build root to `apps/web` is a separate release task.
 - The Astro migration is checked with `npm run check` and built with `npm run build` from `apps/web`.
+- Root `package.json` and `wrangler.jsonc` adapt the monorepo for Cloudflare Workers Git builds: the root build installs and builds `apps/web`, then Wrangler publishes `apps/web/dist` as static assets.
 - `docs/RELEASE_CHECKLIST.md` defines release verification, and `docs/CONTENT_RULES.md` defines public content boundaries.
 
 ### Brand And Location
@@ -95,6 +96,7 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | 2026-06-08 | Use feature branches, pull requests, Cloudflare Preview deployments, production verification, and Git-synchronized rollback as the standard release workflow. | Active | The website is live, so every update needs a reviewable path, a pre-production check, and a recovery procedure that keeps Git and production aligned. |
 | 2026-06-08 | Adopt a content-driven Astro static site as the target frontend architecture, with bilingual URL routes and a backend-neutral `/api/v1` boundary. | In progress | The local static-generation frontend is implemented; production migration remains gated by preview and release verification. |
 | 2026-06-10 | Organize public activities as five broad programme directions and keep Holiday Camp details enquiry-only. | Active | The current brochure supports a balanced learning framework but does not substantiate the previous standalone lesson parameters or fixed camp schedule. |
+| 2026-06-10 | Deploy the Astro output through Cloudflare Workers static assets from the repository root. | Active | The connected Cloudflare project uses Workers Git integration, so it needs a root build command and Wrangler asset-directory configuration. |
 
 ## Architecture Change Log
 
@@ -113,3 +115,4 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | 2026-06-08 | Added the local Astro migration app, separated active code from archived prototypes, and reduced root documentation to project entry points. | KC-021 |
 | 2026-06-10 | Replaced standalone Guitar, Badminton, and AI Skills pages with one bilingual Programmes page, reduced Holiday Camp to a service statement, removed unconfirmed contact claims, and added legacy redirects. | KC-022 |
 | 2026-06-10 | Replaced the contact placeholders with the confirmed public phone number and email across the Astro Contact page and footer. | KC-014 |
+| 2026-06-10 | Added root npm and Wrangler configuration so Cloudflare Workers Git builds generate and publish `apps/web/dist`. | KC-023 |

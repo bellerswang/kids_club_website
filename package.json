@@ -1,0 +1,12 @@
+{
+  "name": "sunbridge-website",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix apps/web ci && npm --prefix apps/web run build",
+    "check": "npm --prefix apps/web ci && npm --prefix apps/web run check",
+    "deploy": "npx wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

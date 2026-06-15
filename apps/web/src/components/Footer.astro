@@ -12,7 +12,7 @@ const text = ui[locale];
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <a class="footer-brand" href={localePath(locale)}>Sunbridge</a>
+      <a class="footer-brand" href={localePath(locale)}>{site.name}</a>
       <p>{text.tagline}</p>
     </div>
     <div>
@@ -27,7 +27,7 @@ const text = ui[locale];
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 Sunbridge</span>
+    <span>© 2026 {site.name}</span>
     <span>{text.footerLocation}</span>
   </div>
 </footer>

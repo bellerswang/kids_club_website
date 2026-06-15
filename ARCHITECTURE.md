@@ -1,6 +1,6 @@
 # Project Architecture
 
-Last reviewed: 2026-06-10
+Last reviewed: 2026-06-15
 
 ## Current Architecture
 
@@ -20,8 +20,9 @@ The repository has two deliberately separate frontend tracks. The root static HT
   - `js/main.js` owns the English/Chinese content dictionary, language preference, responsive navigation, and scroll reveals.
 - Static media lives in `images/`.
 - `apps/web` contains the Astro migration, shared layouts and bilingual page components, centralized site data, English root routes, Chinese `/zh/` routes, and Cloudflare-compatible headers and redirects.
-- The Astro public information architecture is Home, About, Programmes, Holiday Camp, and Contact. `ProgrammesPage.astro` presents five brochure-supported directions: STEM and AI discovery, sports and movement, creative arts, bilingual stories and literature, and social play and communication.
+- The Astro public information architecture is Home, About, Programmes, Holiday Camp, and Contact. `HomePage.astro`, `ProgrammesPage.astro`, and `CampPage.astro` present four brochure-supported offers: Holiday Camp, Badminton, Guitar, and AI Skills.
 - Previous Guitar, Badminton, and AI Skills detail routes are retired from the Astro build and redirect to the combined Programmes page.
+- Authorized activity photos are optimized as WebP files in `apps/web/public/images/` and referenced only from the Astro site.
 
 ### Data Flow
 
@@ -42,11 +43,11 @@ If reactivated and configured later, Supabase Auth owns sessions and credentials
 
 ### Brand And Location
 
-- The sole public brand name is `Sunbridge`, with no Chinese name or `Academy` suffix.
+- The sole public brand name is `Sunbridge Academy`, with no Chinese name.
 - The current brochure is the source of truth for public programme descriptions and contact claims.
 - Public pages do not claim a fixed venue; current locations are confirmed when a visitor enquires.
 - The public contact details are `07476 197319` and `info@sunbridgeacademy.uk`. The unresolved website URL is not exposed by the Astro site.
-- Holiday Camp is presented only as an available service. Dates, schedules, activities, ages, care hours, fees, venues, and availability are not published as fixed facts.
+- Holiday Camp is presented as the main school-break offer. Brochure-confirmed activities and the sample day schedule may be published when clearly framed as examples rather than guaranteed fixed daily delivery.
 - Historical Chinese branding, unsupported locations, and unverified programme claims must not be reintroduced.
 
 ## Planned Architecture
@@ -91,12 +92,13 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | 2026-06-06 | Use Supabase Auth and managed PostgreSQL for the phase-one login and profile system. | Active | It supplies integrated identity, relational storage, and RLS while preserving PostgreSQL portability. |
 | 2026-06-06 | Keep privileged role changes in the database through an administrator-only function. | Active | Browser UI checks alone are not an authorization boundary, and no service key may be exposed client-side. |
 | 2026-06-06 | Align the default site style with corporate flyers, defaulting to a clean light theme with orange branding accents. | Active | Matches the physical flyer materials and unifies the brand color identity (orange/charcoal). |
-| 2026-06-07 | Use `Sunbridge` as the sole public name, with no Chinese name or `Academy` suffix, and Barnet, London as the public location. | Superseded by 2026-06-08 brochure-source decision | The current brochure does not name Barnet and says venues are local partner schools confirmed at booking. |
-| 2026-06-08 | Treat the current Sunbridge brochure as the source of truth for public website claims, default to English with a Chinese switch, and hide login until it is explicitly relaunched. | Active | Keeps the website concise, verifiable, and aligned with current customer-facing material while preserving dormant authentication work. |
+| 2026-06-07 | Use `Sunbridge` as the sole public name, with no Chinese name or `Academy` suffix, and Barnet, London as the public location. | Superseded by 2026-06-15 Sunbridge Academy content decision | The business owner later confirmed `Sunbridge Academy` as the public brand; the site still does not publish Barnet or other unsupported fixed addresses. |
+| 2026-06-08 | Treat the current Sunbridge brochure as the source of truth for public website claims, default to English with a Chinese switch, and hide login until it is explicitly relaunched. | Superseded by 2026-06-15 Sunbridge Academy content decision | The source-of-truth principle remains active, but the confirmed public brand and programme focus changed. |
 | 2026-06-08 | Use feature branches, pull requests, Cloudflare Preview deployments, production verification, and Git-synchronized rollback as the standard release workflow. | Active | The website is live, so every update needs a reviewable path, a pre-production check, and a recovery procedure that keeps Git and production aligned. |
 | 2026-06-08 | Adopt a content-driven Astro static site as the target frontend architecture, with bilingual URL routes and a backend-neutral `/api/v1` boundary. | In progress | The local static-generation frontend is implemented; production migration remains gated by preview and release verification. |
-| 2026-06-10 | Organize public activities as five broad programme directions and keep Holiday Camp details enquiry-only. | Active | The current brochure supports a balanced learning framework but does not substantiate the previous standalone lesson parameters or fixed camp schedule. |
+| 2026-06-10 | Organize public activities as five broad programme directions and keep Holiday Camp details enquiry-only. | Superseded by 2026-06-15 Sunbridge Academy content decision | The business owner confirmed Holiday Camp, Badminton, Guitar, and AI Skills as public offers and approved publishing brochure-confirmed Holiday Camp sample content. |
 | 2026-06-10 | Deploy the Astro output through Cloudflare Workers static assets from the repository root. | Active | The connected Cloudflare project uses Workers Git integration, so it needs a root build command and Wrangler asset-directory configuration. |
+| 2026-06-15 | Use `Sunbridge Academy` as the public brand and focus the Astro site on Holiday Camp, Badminton, Guitar, and AI Skills, with Holiday Camp as the main detailed offer. | Active | The business owner confirmed the brand, programme set, authorized images, and brochure-backed Holiday Camp details for public use. |
 
 ## Architecture Change Log
 
@@ -116,3 +118,4 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | 2026-06-10 | Replaced standalone Guitar, Badminton, and AI Skills pages with one bilingual Programmes page, reduced Holiday Camp to a service statement, removed unconfirmed contact claims, and added legacy redirects. | KC-022 |
 | 2026-06-10 | Replaced the contact placeholders with the confirmed public phone number and email across the Astro Contact page and footer. | KC-014 |
 | 2026-06-10 | Added root npm and Wrangler configuration so Cloudflare Workers Git builds generate and publish `apps/web/dist`. | KC-023 |
+| 2026-06-15 | Refreshed the local Astro site around the confirmed Sunbridge Academy brand, four brochure-backed programme offers, authorized WebP activity photos, and an expanded Holiday Camp page with sample activities and timetable. | KC-018 |

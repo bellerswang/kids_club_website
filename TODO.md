@@ -1,6 +1,6 @@
 # Project TODO
 
-Last reviewed: 2026-06-10
+Last reviewed: 2026-06-15
 
 This file is the source of truth for unfinished engineering work. Update it during every implementation task.
 
@@ -62,9 +62,9 @@ This file is the source of truth for unfinished engineering work. Update it duri
 - Status: In progress
 - Priority: P1
 - Area: Frontend / Content / Cloudflare
-- Next action: Review the generated pages for visual and content parity, test old URL redirects, then deploy `apps/web` only as a Cloudflare Preview.
-- Acceptance criteria: The Preview builds from `apps/web` into `dist`; Home, About and one programme render in English and under `/zh/`; shared site data updates all generated pages; existing production remains unchanged; old URL compatibility is documented.
-- Notes: Follow the phased migration in `docs/TARGET_ARCHITECTURE.md`. Do not switch the production build root until all current public pages, redirects and release checks pass.
+- Next action: Review the refreshed local Astro pages for the Sunbridge Academy brand, four programme entries, authorized images, expanded Holiday Camp content, bilingual consistency, and old URL redirects before deploying `apps/web` as a Cloudflare Preview.
+- Acceptance criteria: Home, Programmes, Holiday Camp, About and Contact render in English and under `/zh/`; optimized images load from `apps/web/public/images`; no page references raw `sample/` files; Astro check and build pass; desktop, tablet and mobile layouts have no horizontal overflow; existing root static production files remain untouched until approval.
+- Notes: This task is advanced by the 2026-06-15 local Astro refresh. Follow the phased migration in `docs/TARGET_ARCHITECTURE.md`. Do not publish or switch production until visual review, redirects and release checks pass.
 
 ## Recently Completed
 

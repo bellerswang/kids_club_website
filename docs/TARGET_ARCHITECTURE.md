@@ -1,6 +1,6 @@
-# Sunbridge 目标架构设计
+# Sunbridge Academy 目标架构设计
 
-最后审阅：2026-06-10
+最后审阅：2026-06-15
 
 ## 1. 目标
 
@@ -107,7 +107,7 @@ kids_club_website/
 | 内容 | 存放位置 | 管理方式 |
 | --- | --- | --- |
 | 品牌、邮箱、导航和全站短文案 | `data/site.ts` | 全站唯一来源 |
-| 五个项目方向 | `components/HomePage.astro` 与 `components/ProgrammesPage.astro` | 英文和中文成对维护 |
+| Holiday Camp、Badminton、Guitar、AI Skills | `components/HomePage.astro` 与 `components/ProgrammesPage.astro` | 英文和中文成对维护 |
 | About、Holiday Camp、Contact 文案 | 对应共享页面组件 | 英文和中文成对维护 |
 | 图片 | `public/images/` | 统一命名和压缩 |
 | SEO 字段 | 共享页面组件 | Astro 类型检查和构建验证 |
@@ -252,7 +252,7 @@ Production branch: main
 ### Phase 2：迁移内容
 
 - 把联系方式、导航和全站 UI 文案移到 data 文件。
-- 把五个项目方向和页面文案放入共享双语组件。
+- 把四个公开项目和页面文案放入共享双语组件。
 - 同时生成英文根路由和 `/zh/` 路由。
 
 ### Phase 3：兼容和切换

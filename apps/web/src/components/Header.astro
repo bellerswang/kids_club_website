@@ -1,5 +1,5 @@
 ---
-import { localePath, ui, type Locale } from '../data/site';
+import { localePath, site, ui, type Locale } from '../data/site';
 
 interface Props {
   locale: Locale;
@@ -14,8 +14,8 @@ const languagePath = localePath(otherLocale, currentPath);
 
 <header class="site-header">
   <div class="container nav-container">
-    <a href={localePath(locale)} class="brand-logo" aria-label="Sunbridge home">
-      <img src="/images/logo.svg" alt="Sunbridge" />
+    <a href={localePath(locale)} class="brand-logo" aria-label={`${site.name} home`}>
+      <img src="/images/logo.svg" alt={site.name} />
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
       <a class="nav-link" href={localePath(locale)}>{text.nav.home}</a>

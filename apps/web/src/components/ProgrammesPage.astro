@@ -3,66 +3,175 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { localePath, type Locale } from '../data/site';
 
 interface Props { locale: Locale; }
+type Programme = {
+  id: string;
+  title: string;
+  subtitle: string;
+  summary: string;
+  image: string;
+  imageAlt: string;
+  activities: string[];
+  details: string;
+};
+
 const { locale } = Astro.props;
 const isZh = locale === 'zh';
 const copy = isZh ? {
-  title: '项目方向 | Sunbridge',
-  description: '探索 Sunbridge 的 STEM 与 AI、运动、创意艺术、双语故事阅读以及社交沟通项目方向。',
-  eyebrow: '项目方向',
-  heading: '通过探索、创造、运动与沟通学习',
-  intro: '我们的项目围绕五个相互连接的方向设计。具体活动会根据当前项目、儿童年龄和实际安排灵活调整。',
-  activity: '可能接触的活动',
-  supports: '支持的发展方向',
+  title: '项目 | Sunbridge Academy',
+  description: '探索 Sunbridge Academy 的 Holiday Camp、羽毛球、吉他和 AI Skills 项目。',
+  eyebrow: '项目',
+  heading: 'Holiday Camp、羽毛球、吉他与 AI Skills',
+  intro: '我们围绕宣传册中的四个核心项目组织内容。具体时间、费用、地点和名额会根据当前安排确认。',
+  activity: '学习与体验内容',
+  details: '适合与安排',
   programmes: [
-    { id: 'stem-ai', title: 'STEM 与 AI 探索', summary: '通过实践挑战和适龄数字探索，鼓励好奇、逻辑与创造性思维。', activities: ['动手挑战与简单实验', '逻辑游戏和问题解决', '适龄 AI 探索与创意想法'], skills: '好奇心、逻辑思维、想象力与合作' },
-    { id: 'sports-movement', title: '运动与协调', summary: '通过积极、有趣的运动体验，帮助儿童保持活力并练习合作。', activities: ['运动与协调挑战', '羽毛球基础', '团队游戏与轻运动'], skills: '协调能力、运动信心、团队合作与积极参与' },
-    { id: 'creative-arts', title: '创意艺术与制作', summary: '让儿童通过多种材料、声音和故事表达想法。', activities: ['艺术、绘画与手工', '音乐、故事与创意制作', '个人创作和小组分享'], skills: '想象力、自我表达、专注与创作信心' },
-    { id: 'bilingual-stories', title: '双语故事与阅读', summary: '通过中英文故事、阅读和讨论，创造自然的倾听与表达机会。', activities: ['中英文故事与图书阅读', '动画、故事片段和引导讨论', '分享、简单展示与创意写作'], skills: '倾听、阅读理解、沟通、表达与文化意识' },
-    { id: 'social-play', title: '社交游戏与沟通', summary: '在受监督的自由活动和团队任务中，让儿童休息、连接并参与。', activities: ['阅读、桌游、绘画与积木', '受监督的自由活动', '团队任务、分享与反思'], skills: '沟通、友谊、合作、自我调节与参与信心' }
-  ],
-  noteTitle: '每次活动都会完全相同吗？',
-  noteBody: '不会。活动会根据当前项目、主题、年龄和实际安排变化。请联系我们确认当前提供的内容。',
+    {
+      id: 'holiday-camp',
+      title: 'Holiday Camp',
+      subtitle: 'Fun, Learning and Growth All in One Place',
+      summary: '安全、有趣且充实的学校假期项目，结合创意活动、运动、游戏和学习，帮助孩子在假期保持活力、结交朋友并探索新兴趣。',
+      image: '/images/children-outdoor-play.webp',
+      imageAlt: '孩子们在户外玩耍',
+      activities: ['创意活动、运动、游戏和学习', 'STEM、艺术、音乐、故事和团队活动', '受监督的自由活动与社交时间'],
+      details: '面向学龄儿童。当前日期、地点、费用和名额请咨询确认。'
+    },
+    {
+      id: 'badminton',
+      title: 'Badminton',
+      subtitle: 'Movement, Fitness and Confidence',
+      summary: '初学者羽毛球课程通过有趣、有结构的训练，帮助孩子发展协调、体能、自信和运动兴趣。',
+      image: '/images/children-badminton.webp',
+      imageAlt: '孩子们在室内学习羽毛球',
+      activities: ['握拍、站姿和步法基础', '发球、击球、移动和敏捷训练', '规则意识、团队合作和积极参与'],
+      details: 'Beginner friendly。具体年龄组、班级人数、地点和试课安排请咨询确认。'
+    },
+    {
+      id: 'guitar',
+      title: 'Guitar',
+      subtitle: 'Music, Confidence and Creative Expression',
+      summary: '初学吉他项目面向刚开始接触音乐或处于早期阶段的孩子，通过循序渐进的引导建立音乐自信。',
+      image: '/images/children-guitar.webp',
+      imageAlt: '孩子们参加吉他课',
+      activities: ['基础和弦、扫弦和节奏', '手指协调、简单歌曲和音乐模式', '音乐表达、自信和展示机会'],
+      details: 'Beginner friendly。小组课和一对一安排以当前可用情况为准。'
+    },
+    {
+      id: 'ai-skills',
+      title: 'AI Skills',
+      subtitle: 'Creativity, Logic and Digital Confidence',
+      summary: 'AI Skills 通过有趣、动手且适龄的方式，介绍人工智能、创意科技和逻辑思维。',
+      image: '/images/children-ai-stem.webp',
+      imageAlt: '孩子们进行 STEM 和创意活动',
+      activities: ['认识 AI 工具的基本使用方式', '逻辑思维、排序和创意问题解决', '数字安全、责任意识和简单项目展示'],
+      details: '无需已有经验。设备、年龄组和班级安排请咨询确认。'
+    }
+  ] satisfies Programme[],
+  noteTitle: '每个项目都会完全相同吗？',
+  noteBody: '不会。活动、主题和安排会根据当前项目、年龄和实际情况调整。我们会在咨询时确认当前可提供的内容。',
   cta: '咨询当前项目'
 } : {
-  title: 'Programmes | Sunbridge',
-  description: 'Explore Sunbridge programme directions across STEM and AI, movement, creative arts, bilingual stories and social communication.',
-  eyebrow: 'Programme Directions',
-  heading: 'Learn through exploration, creativity, movement and communication',
-  intro: 'Our programmes connect five complementary directions. Specific activities adapt to the current programme, children’s ages and practical arrangements.',
-  activity: 'Activities may include',
-  supports: 'Supports',
+  title: 'Programmes | Sunbridge Academy',
+  description: 'Explore Sunbridge Academy programmes across Holiday Camp, badminton, guitar and AI Skills.',
+  eyebrow: 'Programmes',
+  heading: 'Holiday Camp, Badminton, Guitar and AI Skills',
+  intro: 'Our public programme information now focuses on four brochure-backed offers. Times, fees, locations and availability are confirmed when you enquire.',
+  activity: 'What children may learn',
+  details: 'Suitable for',
   programmes: [
-    { id: 'stem-ai', title: 'STEM & AI Discovery', summary: 'Practical challenges and age-appropriate digital exploration encourage curiosity, logic and creative thinking.', activities: ['Hands-on challenges and simple experiments', 'Logic games and problem solving', 'Age-appropriate AI exploration and creative ideas'], skills: 'Curiosity, logical thinking, imagination and collaboration' },
-    { id: 'sports-movement', title: 'Sports & Movement', summary: 'Positive and enjoyable movement experiences help children stay active and practise working with others.', activities: ['Movement and coordination challenges', 'Badminton basics', 'Team games and light physical activity'], skills: 'Coordination, movement confidence, teamwork and positive participation' },
-    { id: 'creative-arts', title: 'Creative Arts & Making', summary: 'Children express ideas through varied materials, sound, stories and creative projects.', activities: ['Art, drawing and craft', 'Music, storytelling and creative making', 'Individual projects and group sharing'], skills: 'Imagination, self-expression, concentration and creative confidence' },
-    { id: 'bilingual-stories', title: 'Bilingual Stories & Literature', summary: 'Chinese and English stories, reading and discussion create natural opportunities to listen and communicate.', activities: ['Chinese and English stories and books', 'Animation, story clips and guided discussion', 'Sharing, simple presentations and creative writing'], skills: 'Listening, reading comprehension, communication, expression and cultural awareness' },
-    { id: 'social-play', title: 'Social Play & Communication', summary: 'Supervised free activity and group tasks give children time to recharge, connect and take part.', activities: ['Reading, board games, drawing and building', 'Supervised free activity', 'Team tasks, sharing and reflection'], skills: 'Communication, friendship, cooperation, self-regulation and participation' }
-  ],
-  noteTitle: 'Will every session include the same activities?',
-  noteBody: 'No. Activities vary with the current programme, theme, age group and practical arrangements. Contact us to confirm what is currently available.',
+    {
+      id: 'holiday-camp',
+      title: 'Holiday Camp',
+      subtitle: 'Fun, Learning and Growth All in One Place',
+      summary: 'Safe, fun and enriching school holiday support with a balance of creative activities, sports, games and learning.',
+      image: '/images/children-outdoor-play.webp',
+      imageAlt: 'Children playing outdoors',
+      activities: ['Creative activities, sports, games and learning', 'STEM, art, music, stories and teamwork tasks', 'Supervised free play and social time'],
+      details: 'For school-aged children. Current dates, locations, fees and availability are confirmed when you enquire.'
+    },
+    {
+      id: 'badminton',
+      title: 'Badminton',
+      subtitle: 'Movement, Fitness and Confidence',
+      summary: 'Beginner badminton coaching helps children build coordination, fitness, confidence and enjoyment through fun and structured sessions.',
+      image: '/images/children-badminton.webp',
+      imageAlt: 'Children learning badminton indoors',
+      activities: ['Grip, stance and footwork basics', 'Serving, hitting, movement and agility', 'Rules, teamwork and positive participation'],
+      details: 'Beginner friendly. Current age groups, class size, venue and trial options are confirmed when you enquire.'
+    },
+    {
+      id: 'guitar',
+      title: 'Guitar',
+      subtitle: 'Music, Confidence and Creative Expression',
+      summary: 'Beginner guitar lessons support children and teens who are new to music or at an early stage of learning.',
+      image: '/images/children-guitar.webp',
+      imageAlt: 'Children taking a guitar lesson',
+      activities: ['Basic chords, strumming and rhythm', 'Finger coordination, simple songs and musical patterns', 'Creative expression, confidence and performance opportunities'],
+      details: 'Beginner friendly. Small group and one-to-one options depend on current availability.'
+    },
+    {
+      id: 'ai-skills',
+      title: 'AI Skills',
+      subtitle: 'Creativity, Logic and Digital Confidence',
+      summary: 'AI Skills introduces artificial intelligence, creative technology and logical thinking in a fun, hands-on and age-appropriate way.',
+      image: '/images/children-ai-stem.webp',
+      imageAlt: 'Children doing STEM and creative activities',
+      activities: ['How age-appropriate AI tools work', 'Logical thinking, sequencing and creative problem-solving', 'Digital safety, responsibility and simple project sharing'],
+      details: 'No prior experience needed. Devices, age groups and class arrangements are confirmed when you enquire.'
+    }
+  ] satisfies Programme[],
+  noteTitle: 'Will every programme run in exactly the same way?',
+  noteBody: 'No. Activities, themes and arrangements vary with the current programme, age group and practical details. We confirm what is currently available when you enquire.',
   cta: 'Ask about current programmes'
 };
 ---
 
 <BaseLayout locale={locale} title={copy.title} description={copy.description}>
-  <section class="page-hero"><div class="container narrow reveal"><p class="eyebrow">{copy.eyebrow}</p><h1>{copy.heading}</h1><p>{copy.intro}</p></div></section>
+  <section class="page-hero">
+    <div class="container narrow reveal">
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1>{copy.heading}</h1>
+      <p>{copy.intro}</p>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container programme-list">
       {copy.programmes.map((programme, index) => (
-        <article class="programme-detail reveal" id={programme.id}>
-          <div class="programme-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
+        <article class="programme-detail programme-detail-photo reveal" id={programme.id}>
+          <img src={programme.image} alt={programme.imageAlt} loading="lazy" />
           <div class="programme-copy">
+            <span class="programme-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
             <h2>{programme.title}</h2>
-            <p class="lead">{programme.summary}</p>
+            <p class="lead">{programme.subtitle}</p>
+            <p>{programme.summary}</p>
             <div class="programme-columns">
-              <div><h3>{copy.activity}</h3><ul class="check-list">{programme.activities.map((item) => <li>{item}</li>)}</ul></div>
-              <div class="programme-support"><h3>{copy.supports}</h3><p>{programme.skills}</p></div>
+              <div>
+                <h3>{copy.activity}</h3>
+                <ul class="check-list">{programme.activities.map((item) => <li>{item}</li>)}</ul>
+              </div>
+              <div class="programme-support">
+                <h3>{copy.details}</h3>
+                <p>{programme.details}</p>
+                {programme.id === 'holiday-camp' && <a class="card-link" href={localePath(locale, 'holiday-camp')}>{locale === 'zh' ? '查看 Holiday Camp 详情' : 'View Holiday Camp details'}</a>}
+              </div>
             </div>
           </div>
         </article>
       ))}
     </div>
   </section>
-  <section class="section section-soft"><div class="container narrow panel reveal"><h2>{copy.noteTitle}</h2><p>{copy.noteBody}</p></div></section>
-  <section class="cta-section"><div class="container cta-card"><h2>{copy.cta}</h2><a class="button" href={localePath(locale, 'contact')}>{copy.cta}</a></div></section>
+
+  <section class="section section-soft">
+    <div class="container narrow panel reveal">
+      <h2>{copy.noteTitle}</h2>
+      <p>{copy.noteBody}</p>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-card">
+      <h2>{copy.cta}</h2>
+      <a class="button" href={localePath(locale, 'contact')}>{copy.cta}</a>
+    </div>
+  </section>
 </BaseLayout>

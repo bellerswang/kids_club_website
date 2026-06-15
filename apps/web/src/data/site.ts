@@ -1,7 +1,7 @@
 export type Locale = 'en' | 'zh';
 
 export const site = {
-  name: 'Sunbridge',
+  name: 'Sunbridge Academy',
   email: 'info@sunbridgeacademy.uk',
   phoneDisplay: '07476 197319',
   phoneHref: '+447476197319',
@@ -19,7 +19,7 @@ export const ui = {
       enquire: 'Enquire'
     },
     language: '中文',
-    tagline: 'Explore, connect and grow.',
+    tagline: 'Where Every Child Shines.',
     footerLocation: 'Programme details and locations are confirmed when you enquire.',
     explore: 'Explore',
     contact: 'Contact'
@@ -28,13 +28,13 @@ export const ui = {
     nav: {
       home: '首页',
       about: '关于我们',
-      programmes: '项目方向',
+      programmes: '项目',
       camp: '假期营',
       contact: '联系我们',
       enquire: '咨询'
     },
     language: 'EN',
-    tagline: '探索、连接、自信成长。',
+    tagline: '让每个孩子闪闪发光。',
     footerLocation: '项目详情和活动地点将在咨询时确认。',
     explore: '探索',
     contact: '联系方式'

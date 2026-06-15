@@ -3,31 +3,182 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { localePath, type Locale } from '../data/site';
 
 interface Props { locale: Locale; }
+type CampFeature = { title: string; body: string; };
+type ScheduleItem = { time: string; title: string; body: string; };
+
 const { locale } = Astro.props;
 const isZh = locale === 'zh';
 const copy = isZh ? {
-  title: 'Holiday Camp | Sunbridge',
-  description: 'Sunbridge 在部分学校假期提供 Holiday Camp。请联系我们确认当前日期、地点和名额。',
+  title: 'Holiday Camp | Sunbridge Academy',
+  description: 'Sunbridge Academy Holiday Camp 为学龄儿童提供安全、有趣且充实的学校假期项目。',
   eyebrow: 'Holiday Camp',
-  heading: '学校假期也提供 Holiday Camp',
-  intro: 'Sunbridge 在部分学校假期提供 Holiday Camp，在受监督的环境中融合创意、运动与适龄学习体验。',
-  note: 'Holiday Camp 的日期、地点、适合年龄、费用和名额会根据当前安排确认。网站不公布具体日程或固定活动清单。',
+  heading: 'Fun, Learning and Growth All in One Place',
+  intro: 'Sunbridge Academy Holiday Camp 在学校假期为学龄儿童提供安全、有结构且愉快的环境，结合创意活动、运动、游戏和学习。',
+  overviewEyebrow: '总览',
+  overviewTitle: '为忙碌家庭设计的假期支持',
+  overviewBody: '孩子可以学习新技能、结交朋友并保持活力。家长可在咨询时确认当前日期、地点、费用、名额和接送安排。',
+  contentEyebrow: '内容介绍',
+  contentTitle: '创意、运动、探索和社交的平衡组合',
+  contentIntro: '活动会根据当天主题、年龄和季节项目调整，以下为宣传册中确认可公开的体验示例。',
+  features: [
+    { title: 'STEM Discovery', body: '动手挑战、简单实验、逻辑游戏和问题解决，鼓励好奇心、逻辑和创造性思维。' },
+    { title: 'Sports & Movement', body: '羽毛球基础、团队游戏、运动挑战和协调活动，帮助孩子保持活力和自信。' },
+    { title: 'Creative Workshops', body: '艺术、手工、音乐、绘画、故事和创意制作，支持想象力和自我表达。' },
+    { title: 'Bilingual Film & Story Time', body: '动画、影片片段和引导讨论，支持倾听、沟通、文化意识和表达信心。' },
+    { title: 'Bilingual Literature', body: '中英文图书阅读和创意写作活动，发展阅读理解与文学兴趣。' },
+    { title: 'Free Play & Social Time', body: '阅读、桌游、绘画、积木和受监督的自由活动，让孩子休息、连接和交朋友。' }
+  ] satisfies CampFeature[],
+  whyEyebrow: '为什么选择我们',
+  whyTitle: '安全、友好并有结构',
+  whyItems: ['DBS Checked', 'Safeguarding Aware', 'Bilingual Support', 'Friendly & Experienced Staff', 'Small Group Environment', 'Fun & Structured Programme'],
+  scheduleEyebrow: '课程表示例',
+  scheduleTitle: 'A Typical Day at Sunbridge Academy Holiday Camp',
+  scheduleIntro: '这是宣传册中的示例安排，用于说明一天的节奏。实际内容会根据当前营期、主题、年龄和场地安排调整。',
+  standardDay: 'Standard Day: 10:00 AM - 2:00 PM',
+  extendedCare: 'Extended Care: 2:00 PM - 5:00 PM',
+  schedule: [
+    { time: '10:00 - 10:30', title: 'Arrival & Free Play', body: '绘画、阅读、拼图、积木和受监督的自由活动。' },
+    { time: '10:30 - 10:45', title: 'Morning Welcome & Group Time', body: '欢迎孩子，介绍当天主题、安全规则和小组活动。' },
+    { time: '10:45 - 11:25', title: 'STEM Adventure', body: '桥梁搭建、纸火箭、机器人游戏、逻辑谜题和创意问题解决。' },
+    { time: '11:25 - 11:50', title: 'Snack & Free Time', body: '点心、社交和自由活动。' },
+    { time: '11:50 - 12:30', title: 'Active Games & Sports', body: '运动游戏、羽毛球基础、团队游戏和协调挑战。' },
+    { time: '12:30 - 1:10', title: 'Lunch & Supervised Free Play', body: '安静午餐后进行阅读、绘画或轻松游戏。' },
+    { time: '1:10 - 1:45', title: 'Creative Maker / AI Play Lab', body: '用想象力、团队合作、简单 STEM 思维或 AI-inspired ideas 完成创意项目。' },
+    { time: '1:45 - 2:00', title: 'Showcase & Pick-up', body: '孩子分享作品、回顾所学并准备接送。' },
+    { time: '2:00 - 5:00', title: 'Extended Care', body: '安静活动、选择活动、小组游戏和灵活接送窗口。' }
+  ] satisfies ScheduleItem[],
   cta: '咨询当前 Holiday Camp',
+  ctaBody: '联系我们确认日期、地点、费用、名额和适合孩子的安排。',
   button: '联系我们'
 } : {
-  title: 'Holiday Camp | Sunbridge',
-  description: 'Sunbridge provides Holiday Camps during selected school breaks. Contact us for current dates, locations and availability.',
+  title: 'Holiday Camp | Sunbridge Academy',
+  description: 'Sunbridge Academy Holiday Camp provides safe, structured and enjoyable school holiday support for school-aged children.',
   eyebrow: 'Holiday Camp',
-  heading: 'Holiday Camps are available during selected school breaks',
-  intro: 'Sunbridge provides supervised Holiday Camps that bring together creative, active and age-appropriate learning experiences.',
-  note: 'Dates, locations, suitable ages, fees and availability are confirmed for each current camp. We do not publish a fixed daily schedule or guaranteed activity list.',
+  heading: 'Fun, Learning and Growth All in One Place',
+  intro: 'Sunbridge Academy Holiday Camp gives school-aged children a safe, structured and enjoyable environment during school breaks, with a balance of creative activities, sports, games and learning.',
+  overviewEyebrow: 'Overview',
+  overviewTitle: 'School holiday support designed for busy families',
+  overviewBody: 'Children can learn new skills, make friends and stay active. Families can enquire to confirm current dates, locations, fees, availability and pick-up arrangements.',
+  contentEyebrow: 'Content Introduction',
+  contentTitle: 'A balanced mix of creativity, activity, discovery and free play',
+  contentIntro: 'Activities may vary depending on the day, theme, age group and seasonal programme. These are brochure-confirmed examples of what children may experience.',
+  features: [
+    { title: 'STEM Discovery', body: 'Hands-on challenges, simple experiments, logic games and problem-solving encourage curiosity, logic and creative thinking.' },
+    { title: 'Sports & Movement', body: 'Badminton basics, team games, movement challenges and coordination activities help children stay active and confident.' },
+    { title: 'Creative Workshops', body: 'Art, craft, music, drawing, storytelling and creative making support imagination, self-expression and creative confidence.' },
+    { title: 'Bilingual Film & Story Time', body: 'Guided animations, film clips and stories support listening, communication, cultural awareness and confident expression.' },
+    { title: 'Bilingual Literature', body: 'Teacher-guided reading of Chinese and English books, with creative writing activities to develop literature.' },
+    { title: 'Free Play & Social Time', body: 'Reading, board games, drawing, building blocks and supervised play help children recharge, connect and make friends.' }
+  ] satisfies CampFeature[],
+  whyEyebrow: 'Why Families Choose Us',
+  whyTitle: 'Safe, friendly and structured',
+  whyItems: ['DBS Checked', 'Safeguarding Aware', 'Bilingual Support', 'Friendly & Experienced Staff', 'Small Group Environment', 'Fun & Structured Programme'],
+  scheduleEyebrow: 'Sample Day',
+  scheduleTitle: 'A Typical Day at Sunbridge Academy Holiday Camp',
+  scheduleIntro: 'This sample timetable shows the rhythm of a day from the brochure. Actual activities may vary with the current camp, theme, age group and venue arrangements.',
+  standardDay: 'Standard Day: 10:00 AM - 2:00 PM',
+  extendedCare: 'Extended Care: 2:00 PM - 5:00 PM',
+  schedule: [
+    { time: '10:00 - 10:30', title: 'Arrival & Free Play', body: 'A calm start with drawing, reading, puzzles, building blocks and supervised free activities.' },
+    { time: '10:30 - 10:45', title: 'Morning Welcome & Group Time', body: 'Children are welcomed and introduced to the day’s theme, safety rules and group activities.' },
+    { time: '10:45 - 11:25', title: 'STEM Adventure', body: 'Hands-on challenges such as bridge building, paper rockets, robot games, logic puzzles and creative problem-solving.' },
+    { time: '11:25 - 11:50', title: 'Snack & Free Time', body: 'A relaxed break for snacks, social time and free play.' },
+    { time: '11:50 - 12:30', title: 'Active Games & Sports', body: 'Movement activities, badminton basics, teamwork games and coordination challenges.' },
+    { time: '12:30 - 1:10', title: 'Lunch & Supervised Free Play', body: 'A calm lunch period followed by reading, drawing or quiet games.' },
+    { time: '1:10 - 1:45', title: 'Creative Maker / AI Play Lab', body: 'Children complete a creative project using imagination, teamwork, simple STEM thinking or AI-inspired ideas.' },
+    { time: '1:45 - 2:00', title: 'Showcase & Pick-up', body: 'Children share what they created, reflect on what they learned and prepare for pick-up.' },
+    { time: '2:00 - 5:00', title: 'Extended Care', body: 'Quiet activities, choice activities, group games and a flexible pick-up window.' }
+  ] satisfies ScheduleItem[],
   cta: 'Ask about the current Holiday Camp',
+  ctaBody: 'Contact us to confirm dates, locations, fees, availability and the best arrangement for your child.',
   button: 'Contact us'
 };
 ---
 
 <BaseLayout locale={locale} title={copy.title} description={copy.description}>
-  <section class="page-hero"><div class="container narrow reveal"><p class="eyebrow">{copy.eyebrow}</p><h1>{copy.heading}</h1><p>{copy.intro}</p></div></section>
-  <section class="section"><div class="container narrow panel camp-summary reveal"><p>{copy.note}</p></div></section>
-  <section class="cta-section"><div class="container cta-card"><h2>{copy.cta}</h2><a class="button" href={localePath(locale, 'contact')}>{copy.button}</a></div></section>
+  <section class="page-hero page-hero-photo">
+    <div class="container narrow reveal">
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1>{copy.heading}</h1>
+      <p>{copy.intro}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split photo-split">
+      <img class="section-photo reveal" src="/images/children-creative-play.webp" alt={isZh ? '孩子们进行创意活动' : 'Children doing creative activities'} loading="lazy" />
+      <div class="reveal">
+        <p class="eyebrow">{copy.overviewEyebrow}</p>
+        <h2>{copy.overviewTitle}</h2>
+        <p>{copy.overviewBody}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">{copy.contentEyebrow}</p>
+        <h2>{copy.contentTitle}</h2>
+        <p>{copy.contentIntro}</p>
+      </div>
+      <div class="feature-grid">
+        {copy.features.map((feature) => (
+          <article class="feature-card reveal">
+            <h3>{feature.title}</h3>
+            <p>{feature.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <p class="eyebrow">{copy.whyEyebrow}</p>
+        <h2>{copy.whyTitle}</h2>
+      </div>
+      <div class="panel reveal">
+        <ul class="pill-list">
+          {copy.whyItems.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">{copy.scheduleEyebrow}</p>
+        <h2>{copy.scheduleTitle}</h2>
+        <p>{copy.scheduleIntro}</p>
+      </div>
+      <div class="schedule-meta reveal">
+        <span>{copy.standardDay}</span>
+        <span>{copy.extendedCare}</span>
+      </div>
+      <div class="schedule-list">
+        {copy.schedule.map((item) => (
+          <article class="schedule-item reveal">
+            <time>{item.time}</time>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-card">
+      <div>
+        <h2>{copy.cta}</h2>
+        <p>{copy.ctaBody}</p>
+      </div>
+      <a class="button" href={localePath(locale, 'contact')}>{copy.button}</a>
+    </div>
+  </section>
 </BaseLayout>

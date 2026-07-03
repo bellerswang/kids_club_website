@@ -996,6 +996,46 @@ main {
   color: var(--text-muted);
 }
 
+.fees-grid {
+  display: grid;
+  max-width: 920px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.fee-card {
+  display: grid;
+  min-height: 190px;
+  padding: 30px;
+  align-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: #fff;
+  text-align: center;
+  box-shadow: var(--glass-shadow);
+}
+
+.fee-card span {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.fee-card strong {
+  margin: 8px 0 4px;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1;
+}
+
+.fee-card p {
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
 .cta-section {
   padding: 36px 0 80px;
 }
@@ -1129,7 +1169,8 @@ main {
   .grid-four,
   .programme-grid,
   .programme-card-grid,
-  .feature-grid {
+  .feature-grid,
+  .fees-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1175,6 +1216,7 @@ main {
   .programme-grid,
   .programme-card-grid,
   .feature-grid,
+  .fees-grid,
   .contact-grid,
   .footer-grid {
     grid-template-columns: 1fr;

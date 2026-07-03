@@ -1,6 +1,6 @@
 # Project Architecture
 
-Last reviewed: 2026-06-15
+Last reviewed: 2026-07-03
 
 ## Current Architecture
 
@@ -47,7 +47,7 @@ If reactivated and configured later, Supabase Auth owns sessions and credentials
 - The current brochure is the source of truth for public programme descriptions and contact claims.
 - Public pages do not claim a fixed venue; current locations are confirmed when a visitor enquires.
 - The public contact details are `07476 197319` and `info@sunbridgeacademy.uk`. The unresolved website URL is not exposed by the Astro site.
-- Holiday Camp is presented as the main school-break offer. Brochure-confirmed activities and the sample day schedule may be published when clearly framed as examples rather than guaranteed fixed daily delivery.
+- Holiday Camp is presented as the main school-break offer. Brochure-confirmed activities and the sample day schedule may be published when clearly framed as examples rather than guaranteed fixed daily delivery. Current public Holiday Camp fees are published on the Astro Holiday Camp page as confirmed owner pricing.
 - Historical Chinese branding, unsupported locations, and unverified programme claims must not be reintroduced.
 
 ## Planned Architecture
@@ -119,3 +119,4 @@ Cloud project creation, credentials, SMTP/OAuth configuration, and production ba
 | 2026-06-10 | Replaced the contact placeholders with the confirmed public phone number and email across the Astro Contact page and footer. | KC-014 |
 | 2026-06-10 | Added root npm and Wrangler configuration so Cloudflare Workers Git builds generate and publish `apps/web/dist`. | KC-023 |
 | 2026-06-15 | Refreshed the local Astro site around the confirmed Sunbridge Academy brand, four brochure-backed programme offers, authorized WebP activity photos, and an expanded Holiday Camp page with sample activities and timetable. | KC-018 |
+| 2026-07-03 | Added confirmed public Holiday Camp fees to the Astro Holiday Camp page while keeping booking and date confirmation enquiry-led. | KC-018 |

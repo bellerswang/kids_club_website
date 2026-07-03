@@ -5,6 +5,7 @@ import { localePath, type Locale } from '../data/site';
 interface Props { locale: Locale; }
 type CampFeature = { title: string; body: string; };
 type ScheduleItem = { time: string; title: string; body: string; };
+type FeeItem = { label: string; price: string; note: string; };
 
 const { locale } = Astro.props;
 const isZh = locale === 'zh';
@@ -36,6 +37,14 @@ const copy = isZh ? {
   scheduleIntro: '这是宣传册中的示例安排，用于说明一天的节奏。实际内容会根据当前营期、主题、年龄和场地安排调整。',
   standardDay: 'Standard Day: 10:00 AM - 2:00 PM',
   extendedCare: 'Extended Care: 2:00 PM - 5:00 PM',
+  feesEyebrow: '费用',
+  feesTitle: 'Holiday Camp 费用',
+  feesIntro: '当前 Holiday Camp 价格按日或按周提供。日期、名额和兄弟姐妹安排请联系我们确认。',
+  fees: [
+    { label: '标准日', price: '£39', note: '每位儿童 / 天' },
+    { label: '整周', price: '£174', note: '每位儿童 / 周' },
+    { label: '延长照护', price: '+£7', note: '每位儿童 / 天' }
+  ] satisfies FeeItem[],
   schedule: [
     { time: '10:00 - 10:30', title: 'Arrival & Free Play', body: '绘画、阅读、拼图、积木和受监督的自由活动。' },
     { time: '10:30 - 10:45', title: 'Morning Welcome & Group Time', body: '欢迎孩子，介绍当天主题、安全规则和小组活动。' },
@@ -78,6 +87,14 @@ const copy = isZh ? {
   scheduleIntro: 'This sample timetable shows the rhythm of a day from the brochure. Actual activities may vary with the current camp, theme, age group and venue arrangements.',
   standardDay: 'Standard Day: 10:00 AM - 2:00 PM',
   extendedCare: 'Extended Care: 2:00 PM - 5:00 PM',
+  feesEyebrow: 'Fees',
+  feesTitle: 'Holiday Camp Fees',
+  feesIntro: 'Current Holiday Camp fees are available by day or by week. Please contact us to confirm dates, availability and sibling arrangements.',
+  fees: [
+    { label: 'Standard Day', price: '£39', note: 'per child / day' },
+    { label: 'Full Week', price: '£174', note: 'per child / week' },
+    { label: 'Extended Care', price: '+£7', note: 'per child / day' }
+  ] satisfies FeeItem[],
   schedule: [
     { time: '10:00 - 10:30', title: 'Arrival & Free Play', body: 'A calm start with drawing, reading, puzzles, building blocks and supervised free activities.' },
     { time: '10:30 - 10:45', title: 'Morning Welcome & Group Time', body: 'Children are welcomed and introduced to the day’s theme, safety rules and group activities.' },
@@ -166,6 +183,25 @@ const copy = isZh ? {
               <h3>{item.title}</h3>
               <p>{item.body}</p>
             </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">{copy.feesEyebrow}</p>
+        <h2>{copy.feesTitle}</h2>
+        <p>{copy.feesIntro}</p>
+      </div>
+      <div class="fees-grid">
+        {copy.fees.map((fee) => (
+          <article class="fee-card reveal">
+            <span>{fee.label}</span>
+            <strong>{fee.price}</strong>
+            <p>{fee.note}</p>
           </article>
         ))}
       </div>
